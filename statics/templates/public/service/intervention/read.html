@@ -1,0 +1,38 @@
+{% extends "public/service/index/index.html" %}
+{% load static %}
+
+{% block content %}
+    {% if intervention %}
+        <div class = "intervention">
+            <div class = "card-body">
+                <header>{{intervention.title | default:'None available'}}</header>
+
+                <p><i class = "fa-solid fa-users"></i>{{intervention.hosting_agency | default:'None available'}}</p>
+
+                <p><i class = "fa-solid fa-calendar-check"></i>{{intervention.intervention_date | date:'M. j, Y' | default:'None available'}}</p>
+
+                <p><i class = "fa-solid fa-location-dot"></i>{{intervention.location | default:'None available'}}</p>
+
+                <img src = "{{intervention.intervention_photo.url}}">
+
+                <p>{{intervention.details | default:'None available'}}</p>
+
+                <p><i class = "fa-solid fa-arrow-up-wide-short"></i>{{intervention.caught_amount | default:'None available'}} COTS caught.</p>
+
+                <div class = "button">
+                    <a class = "share-intervention" target = "blank">Share</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <script>
+        {% if intervention %}
+            const link = encodeURI("{{scheme}}://{{host}}{% url 'Public Service Intervention Read' intervention.id %}");
+        
+            const facebook = document.querySelector(".share-intervention");
+
+            facebook.href = "https://www.facebook.com/share.php?u=" + link;
+        {% endif %}
+    </script>
+{% endblock content %}

@@ -1,0 +1,501 @@
+{% extends "contributor/service/index/index.html" %}
+{% load static %}
+
+
+<div class="h-full w-dvw justify-center items-center">
+
+
+
+    {% block content %}
+    <h1 class="my-[2rem] text-center font-bold text-[3rem] ">POSTS DETAILS</h1>
+
+    {% if valid_post %}
+    <div class="w-full">
+        <div class="flex w-full justify-between items-center">
+            <div>
+                <p><i class="fa-solid fa-flag mr-2"></i>Valid</p>
+                <p><i class="fa-solid fa-user mr-2"></i>{{valid_post.user}}</p>
+            </div>
+
+            <p><i class="fa-solid fa-calendar-check mr-2"></i>{{valid_post.capture_date | date:'M. j, Y, g:i a' |
+                default:'None available'}}</p>
+
+        </div>
+        <div>
+            <div class="post-gallery">
+                {% for post_photo in valid_post.post_photos.all %}
+                <img class="gallery-photo" src="{{post_photo.post_photo.url}}">
+                {% endfor %}
+            </div>
+
+
+
+            <p class="font-bold"><i class="fa-solid fa-location-dot mr-2"></i>{{valid_post.coordinates.latitude |
+                default:'0'}}° N, {{valid_post.coordinates.longitude | default:'0'}}° E</p>
+
+
+
+            <p class="indent-10">{{valid_post.description | default:'None available'}}</p>
+
+            <table class="mt-[2rem] border-2">
+                <caption class="font-bold">Post observation</caption>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Size</td>
+
+                    <td>{{valid_post.post_observation.size | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Depth</td>
+
+                    <td>{{valid_post.post_observation.depth | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Density</td>
+
+                    <td>{{valid_post.post_observation.density | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Weather</td>
+
+                    <td>{{valid_post.post_observation.weather | default:'None available'}}</td>
+                </tr>
+            </table>
+
+
+            <div class="flex gap-4 mt-[5rem] justify-end">
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Post Valid Send' valid_post.id %}">Send</a>
+                </div>
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Report Update' valid_post.id %}">Update</a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if invalid_post %}
+    <div class="w-full">
+        <div class="flex w-full justify-between items-center">
+            <div>
+                <p><i class="fa-solid fa-flag mr-2"></i>Invalid</p>
+                <p><i class="fa-solid fa-user mr-2"></i>{{invalid_post.user}}</p>
+            </div>
+
+            <p><i class="fa-solid fa-calendar-check mr-2"></i>{{invalid_post.capture_date | date:'M. j, Y, g:i a' |
+                default:'None available'}}</p>
+
+        </div>
+        <div>
+            <div class="post-gallery">
+                {% for post_photo in invalid_post.post_photos.all %}
+                <img class="gallery-photo" src="{{post_photo.post_photo.url}}">
+                {% endfor %}
+            </div>
+
+
+
+            <p class="font-bold"><i class="fa-solid fa-location-dot mr-2"></i>{{invalid_post.coordinates.latitude |
+                default:'0'}}° N, {{invalid_post.coordinates.longitude | default:'0'}}° E</p>
+
+
+
+            <p class="indent-10">{{invalid_post.description | default:'None available'}}</p>
+
+            <table class="mt-[2rem] border-2">
+                <caption class="font-bold">Post observation</caption>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Size</td>
+
+                    <td>{{invalid_post.post_observation.size | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Depth</td>
+
+                    <td>{{invalid_post.post_observation.depth | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Density</td>
+
+                    <td>{{invalid_post.post_observation.density | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Weather</td>
+
+                    <td>{{invalid_post.post_observation.weather | default:'None available'}}</td>
+                </tr>
+            </table>
+
+
+            <div class="flex gap-4 mt-[5rem] justify-end">
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Post Invalid Send' invalid_post.id %}">Send</a>
+                </div>
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Report Update' invalid_post.id %}">Update</a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if pending_post %}
+    <div class="w-full">
+        <div class="flex w-full justify-between items-center">
+            <div>
+                <p><i class="fa-solid fa-flag mr-2"></i>Pending</p>
+                <p><i class="fa-solid fa-user mr-2"></i>{{pending_post.user}}</p>
+            </div>
+
+            <p><i class="fa-solid fa-calendar-check mr-2"></i>{{pending_post.capture_date | date:'M. j, Y, g:i a' |
+                default:'None available'}}</p>
+
+        </div>
+        <div>
+            <div class="post-gallery">
+                {% for post_photo in pending_post.post_photos.all %}
+                <img class="gallery-photo" src="{{post_photo.post_photo.url}}">
+                {% endfor %}
+            </div>
+
+
+
+            <p class="font-bold"><i class="fa-solid fa-location-dot mr-2"></i>{{pending_post.coordinates.latitude |
+                default:'0'}}° N, {{pending_post.coordinates.longitude | default:'0'}}° E</p>
+
+
+
+            <p class="indent-10">{{pending_post.description | default:'None available'}}</p>
+
+            <table class="mt-[2rem] border-2">
+                <caption class="font-bold">Post observation</caption>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Size</td>
+
+                    <td>{{pending_post.post_observation.size | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Depth</td>
+
+                    <td>{{pending_post.post_observation.depth | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Density</td>
+
+                    <td>{{pending_post.post_observation.density | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Weather</td>
+
+                    <td>{{pending_post.post_observation.weather | default:'None available'}}</td>
+                </tr>
+            </table>
+
+
+            <div class="flex gap-4 mt-[5rem] justify-end">
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Post Pending Send' pending_post.id %}">Send</a>
+                </div>
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Report Update' pending_post.id %}">Update</a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    {% endif %}
+
+    {% if draft_post %}
+    <div class="w-full">
+        <div class="flex w-full justify-between items-center">
+            <div>
+                <p><i class="fa-solid fa-flag mr-2"></i>Draft</p>
+                <p><i class="fa-solid fa-user mr-2"></i>{{draft_post.user}}</p>
+            </div>
+
+            <p><i class="fa-solid fa-calendar-check mr-2"></i>{{draft_post.capture_date | date:'M. j, Y, g:i a' |
+                default:'None available'}}</p>
+
+        </div>
+        <div>
+            <div class="post-gallery">
+                {% for post_photo in draft_post.post_photos.all %}
+                <img class="gallery-photo" src="{{post_photo.post_photo.url}}">
+                {% endfor %}
+            </div>
+
+
+
+            <p class="font-bold"><i class="fa-solid fa-location-dot mr-2"></i>{{draft_post.coordinates.latitude |
+                default:'0'}}° N, {{draft_post.coordinates.longitude | default:'0'}}° E</p>
+
+
+
+            <p class="indent-10">{{draft_post.description | default:'None available'}}</p>
+
+            <table class="mt-[2rem] border-2">
+                <caption class="font-bold">Post observation</caption>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Size</td>
+
+                    <td>{{draft_post.post_observation.size | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Depth</td>
+
+                    <td>{{draft_post.post_observation.depth | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Density</td>
+
+                    <td>{{draft_post.post_observation.density | default:'0'}}</td>
+                </tr>
+
+                <tr class="border-2 p-2 flex gap-4">
+                    <td class="font-bold">Weather</td>
+
+                    <td>{{draft_post.post_observation.weather | default:'None available'}}</td>
+                </tr>
+            </table>
+
+
+            <div class="flex gap-4 mt-[5rem] justify-end">
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Post Draft Send' draft_post.id %}">Send</a>
+                </div>
+
+                <div
+                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a href="{% url 'Contributor Service Report Update' draft_post.id %}">Update</a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        {% if valid_post %}
+        const link = encodeURI("{{scheme}}://{{host}}{% url 'Contributor Service Post Read' valid_post.id %}");
+
+        const facebook = document.querySelector(".share-post");
+
+        facebook.href = "https://www.facebook.com/share.php?u=" + link;
+        {% endif %}
+    </script>
+
+    <script>
+        document.querySelector(".delete-post").onclick = function (event) {
+            event.preventDefault();
+
+            if (!navigator.onLine) {
+                const username = "{{request.user.username}}";
+
+                Swal.fire({ title: "Hey!", text: username + ", " + "your information input was vanished offline from COTSEye. Kindly visit the current page again if back online.", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: { confirmButton: "info-button", title: "title" } }).then(() => {
+                    location.reload();
+                });
+
+            } else {
+                window.location.href = "{% if invalid_post %}{% url 'Contributor Service Post Invalid Delete' invalid_post.id %}{% endif %}";
+            };
+        };
+    </script>
+
+    <script>
+        document.querySelector(".send-post").onclick = function (event) {
+            event.preventDefault();
+
+            if (!navigator.onLine) {
+                const username = "{{request.user.username}}";
+
+                Swal.fire({ title: "Hey!", text: username + ", " + "your information input was sent offline to COTSEye. Kindly visit the current page again if back online.", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: { confirmButton: "info-button", title: "title" } }).then(() => {
+                    location.reload();
+                });
+
+            } else {
+                Swal.fire({ title: "Yay!", text: username + ", " + "your information input was sent offline to COTSEye. Kindly visit the current page again if back online.", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: { confirmButton: "success-button", title: "title" } }).then(() => {
+                    window.location.href = "{% if draft_post %}{% url 'Contributor Service Post Draft Send' draft_post.id %}{% endif %}";
+                });
+            };
+        };
+    </script>
+
+    <script>
+        const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+        const request = indexedDB.open("cotseye", 1);
+
+        request.onupgradeneeded = (event) => {
+            const cotseye = event.target.result;
+
+            const cotseye_schema = cotseye.createObjectStore("cotseye_schema", { keyPath: "id", autoIncrement: true });
+        };
+
+        request.onsuccess = (event) => {
+            const cotseye = event.target.result;
+
+            {% if invalid_post %}
+            document.querySelector(".delete-post").addEventListener("click", (event) => {
+                if (!navigator.onLine) {
+                    event.preventDefault();
+
+                    const id = "{{invalid_post.id}}";
+
+                    const user = "{{request.user.id}}";
+
+                    const transaction = cotseye.transaction("cotseye_schema", "readwrite");
+
+                    const cotseye_schema = transaction.objectStore("cotseye_schema");
+
+                    const post = {
+                        id: parseInt(id),
+
+                        user: parseInt(user)
+                    };
+
+                    cotseye_schema.add(post);
+                };
+            });
+
+            {% else %}
+            document.querySelector(".send-post").addEventListener("click", (event) => {
+                if (!navigator.onLine) {
+                    event.preventDefault();
+
+                    const id = "{{draft_post.id}}";
+
+                    const user = "{{request.user.id}}";
+
+                    const transaction = cotseye.transaction("cotseye_schema", "readwrite");
+
+                    const cotseye_schema = transaction.objectStore("cotseye_schema");
+
+                    const post = {
+                        id: parseInt(id),
+
+                        user: parseInt(user)
+                    };
+
+                    cotseye_schema.add(post);
+                };
+            });
+            {% endif %}
+
+            if (navigator.onLine) {
+                const transaction = cotseye.transaction("cotseye_schema", "readonly");
+
+                const cotseye_schema = transaction.objectStore("cotseye_schema");
+
+                const post = cotseye_schema.getAll();
+
+                post.onsuccess = (event) => {
+                    const information = event.target.result;
+
+                    if (information && information.length > 0) {
+                        const json = JSON.stringify(information);
+
+                        const token = "{{csrf_token}}"
+
+                        {% if invalid_post %}
+                        fetch("{% url 'Contributor Service Post Invalid Delete Fetch' %}", {
+                            method: "POST",
+
+                            headers: { "Content-Type": "application/json", "X-CSRFToken": token },
+
+                            body: json
+
+                        }).then((event) => {
+                            const request = indexedDB.open("cotseye", 1);
+
+                            request.onsuccess = (event) => {
+                                const cotseye = event.target.result;
+
+                                const transaction = cotseye.transaction("cotseye_schema", "readwrite");
+
+                                const cotseye_schema = transaction.objectStore("cotseye_schema");
+
+                                cotseye_schema.clear();
+
+                                const username = "{{request.user.username}}";
+
+                                Swal.fire({ title: "Yay!", text: username + ", " + "your information input recorded offline was delivered to COTSEye.", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: { confirmButton: "success-button", title: "title" } }).then(() => {
+                                    window.location.href = "{% url 'Contributor Service Home' %}";
+                                });
+                            };
+                        });
+
+                        {% else %}
+                        fetch("{% url 'Contributor Service Post Draft Send Fetch' %}", {
+                            method: "POST",
+
+                            headers: { "Content-Type": "application/json", "X-CSRFToken": token },
+
+                            body: json
+
+                        }).then((event) => {
+                            const request = indexedDB.open("cotseye", 1);
+
+                            request.onsuccess = (event) => {
+                                const cotseye = event.target.result;
+
+                                const transaction = cotseye.transaction("cotseye_schema", "readwrite");
+
+                                const cotseye_schema = transaction.objectStore("cotseye_schema");
+
+                                cotseye_schema.clear();
+
+                                const username = "{{request.user.username}}";
+
+                                Swal.fire({ title: "Yay!", text: username + ", " + "your information input recorded offline was delivered to COTSEye.", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: { confirmButton: "success-button", title: "title" } }).then(() => {
+                                    window.location.href = "{% url 'Contributor Service Home' %}";
+                                });
+                            };
+                        });
+                        {% endif %}
+                    };
+                };
+            };
+        };
+    </script>
+
+</div>
+{% endblock content %}

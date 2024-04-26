@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+
+        <link rel = "manifest" href = "{% static 'templates/webwares/manifest.json' %}">
+
+        <script src = "{% static 'templates/webwares/application.js' %}"></script>
+
+        <meta name = "theme-color" content = "#154360">
+
+        <link rel = "apple-touch-icon" href = "{% static 'assets/icons/logo (180 x 180).png' %}">
+
+        <meta name = "apple-mobile-web-app-status-bar" content = "#154360">
+
+        <link rel="stylesheet" href="/statics/src/output.css">
+
+        <link rel = "icon" type = "image/x-icon" href = "{% static 'assets/icons/logo.png' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/index/index.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/home/home.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/announcement/announcement.css' %}">
+            
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/announcement/read.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/profile/profile.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/profile/update.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/report/report.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/report/capture.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/report/choose.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/post/post.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/post/feed.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/post/read.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/status/status.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/intervention/intervention.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/intervention/read.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/inquiry/inquiry.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/map/map.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/resource/resource.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/resource/link.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/resource/file.css' %}">
+
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'css/contributor/service/fallback/fallback.css' %}">
+
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">          
+
+        <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity = "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin = ""/>    
+
+        <script src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity = "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin = ""></script>
+
+        <script src = "https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
+
+        <title>COTSEye | Home</title>
+    </head>
+
+    <body>
+        <nav>
+            <div class = "navigation-bar">
+                <span class = "navigation-logo"><a href = "{% url 'Contributor Service Home' %}"><img src = "{% static 'assets/icons/logo.png' %}" alt = "navigation-logo"></a></span>
+
+                <div class = "navigation-menu bg-orange">
+                    <div class = "menu bg-orange-400 ">
+                        <div class = "toggle">                        
+                            <i class = "fa-solid fa-circle-arrow-left"></i>
+                        </div>
+
+                        <ul class = "navigation-sidelinks">
+                            <li><a href = "{% url 'Contributor Service Map' %}">COTS maps</a></li>
+
+                            <li><a href = "{% url 'Contributor Service Post Feed' %}">COTS eye</a></li>
+
+                            <li><a href = "{% url 'Contributor Service Post' %}">My posts</a></li>
+
+                            <li><a href = "{% url 'Contributor Service Inquiry' %}">FAQS</a></li>
+
+                            <li><a href = "{% url 'Contributor Service Resource' %}">Resources</a></li>
+
+                            <li><a href = "{% url 'Contributor Service Announcement' %}">Announcements</a></li>
+
+                            <li><a href = "{% url 'Contributor Service Intervention' %}">Intervention programs</a></li>
+                        </ul>
+                    </div>
+
+                    <li><a href = "{% url 'Contributor Service Profile' %}">Profile</a></li>
+
+                    <i class = "fa-solid fa-bars opened-side"></i>
+                </div>
+            </div>
+        </nav>
+    
+
+        <div class = "content">
+            {% block content %}
+    
+    
+            {% endblock content %}
+        </div>
+    </body>
+
+    <script type = "text/javascript">if(window.location.hash && window.location.hash === "#_=_"){ window.location.hash = ""; history.pushState("", document.title, window.location.pathname);}</script>
+
+    <script>
+        const body = document.querySelector("body");
+
+        const nav = document.querySelector("nav");
+
+        const openedSide = document.querySelector(".opened-side");
+                    
+        openedSide.addEventListener("click", () =>{
+            nav.classList.add("active");
+        });
+    
+        body.addEventListener("click", e =>{
+            let clickedElement = e.target;
+    
+            if (!clickedElement.classList.contains("opened-side") && !clickedElement.classList.contains("menu")){
+                nav.classList.remove("active");
+            }
+        });
+    </script>
+</html>

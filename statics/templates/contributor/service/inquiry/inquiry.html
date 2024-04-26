@@ -1,0 +1,144 @@
+{% extends "contributor/service/index/index.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="w-dvw px-[2rem]" id = "inquiry-search">
+
+        <h1 class="my-[4rem] text-center font-bold text-[3rem]">COTSEYE App FAQS</h1>
+
+        <div class="h-fit my-[4rem] block w-full">
+            <h2 class="font-bold">COTSEYE:</h2>
+
+            <div class="flex gap-4 flex-col">
+                <div class="w-full items-start flex flex-col justify-start">
+                    <h3 class="font-bold">How to create an account?</h3>
+                    <p class="ml-4">YEah eayh</p>
+                </div>
+    
+                <div class="w-full items-start flex flex-col justify-start">
+                    <h3 class="font-bold">How to create an account?</h3>
+                    <p class="ml-4">YEah eayh</p>
+                </div>
+    
+                <div class="w-full items-start flex flex-col justify-start">
+                    <h3 class="font-bold">How to create an account?</h3>
+                    <p class="ml-4">YEah eayh</p>
+                </div>
+    
+                <div class="w-full items-start flex flex-col justify-start">
+                    <h3 class="font-bold">How to create an account?</h3>
+                    <p class="ml-4">YEah eayh</p>
+                </div>
+
+                <img src="https://img-corp.com/images/logo@2x.png" alt="image">
+            </div>
+            
+            
+        </div>
+
+
+
+        <!-- <form action = "" class = "inquiry-form" method = "GET">
+            {% csrf_token %}
+
+            <div class = "card-header">
+                <header>Search inquiries</header>
+            </div>
+
+            <div class = "card-body">
+                <div class = "field">
+                    <label for = "keyword">Keyword</label> 
+
+                    <div class = "keyword">
+                        <input type = "search" value = "" id = "keyword" name = "keyword" required>  
+                        
+                        <i class = "fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+                <div class = "button">
+                    <a class = "search-inquiries" type = "submit">Search</a>
+                </div>    
+            </div>
+        </form> -->
+
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == "info" %}<script>Swal.fire({title: "Hey!", text: "{{message}}", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: {confirmButton: "info-button", title: "title"}})</script>
+            
+            {% elif message.tags == "success" %}<script>Swal.fire({title: "Yay!", text: "{{message}}", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: {confirmButton: "success-button", title: "title"}})</script>
+            
+            {% else %}<script>Swal.fire({title: "Oops!", text: "{{message}}", background: "#FFFFFF", icon: "error", iconColor: "#C90016", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#C90016", customClass: {confirmButton: "error-button", title: "title"}})</script>
+            
+            {% endif %}    
+        {% endfor %}
+    {% endif %}
+
+    <script>
+        document.querySelector(".search-inquiries").onclick = function() {
+            document.querySelector(".inquiry-form").submit();
+        }
+    </script>
+
+    {% if results %}
+        <div class = "line" id = "results"></div>
+
+        {% for inquiry in results %}
+            <div class = "inquiry">
+                <div class = "card-header" onclick = "toggleBody(this)">
+                    <header><!-- <i class = "fa-solid fa-feather-pointed"></i> -->{{inquiry.question}}</header>
+                </div>
+
+                <div class = "card-body">
+                    <p><i class = "fa-solid fa-quote-left"></i>{{inquiry.answer}}<i class = "fa-solid fa-quote-right"></i></p>
+                </div>
+            </div>
+        {% endfor %}
+    
+    {% else %}
+        <div class = "line" id = "records"></div>
+
+        {% for inquiry in records %}
+            <div class = "inquiry">
+                <div class = "card-header" onclick = "toggleBody(this)">
+                    <header><!-- <i class = "fa-solid fa-feather-pointed"></i> -->{{inquiry.question}}</header>
+                </div>
+
+                <div class = "card-body">
+                    <p><i class = "fa-solid fa-quote-left"></i>{{inquiry.answer}}<i class = "fa-solid fa-quote-right"></i></p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == "info" %}<script>Swal.fire({title: "Hey!", text: "{{message}}", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: {confirmButton: "info-button", title: "title"}})</script>
+            
+            {% elif message.tags == "success" %}<script>Swal.fire({title: "Yay!", text: "{{message}}", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: {confirmButton: "success-button", title: "title"}})</script>
+            
+            {% else %}<script>Swal.fire({title: "Oops!", text: "{{message}}", background: "#FFFFFF", icon: "error", iconColor: "#C90016", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#C90016", customClass: {confirmButton: "error-button", title: "title"}})</script>
+            
+            {% endif %}    
+        {% endfor %}
+    {% endif %}
+
+    <script>
+        function toggleBody(element){
+            var body = element.nextElementSibling;
+            
+            if(body.style.display === "none" || body.style.display === ""){
+                body.style.borderBottomLeftRadius = "5px";
+
+                body.style.borderBottomTopRadius = "5px";
+                
+                body.style.display = "grid";
+            
+            } else{
+                body.style.display = "none";
+            };
+        };
+    </script>
+{% endblock content %}
