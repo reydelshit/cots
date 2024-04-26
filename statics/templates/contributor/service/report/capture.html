@@ -2,95 +2,67 @@
 {% load static %}
 
 {% block content %}
-    <form action = "" class = "report-form" method = "POST" enctype = "multipart/form-data">
+
+<style>
+    .tabs {
+  overflow: hidden;
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0
+}
+
+.tablink {
+    width: 100%;
+  background-color: #2563eb;
+  float: left;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.tablink:hover {
+  background-color: #ddd;
+}
+
+.tablink.active {
+  background-color: #779df1;
+}
+
+.tabcontent {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: -1px;
+}
+
+.tabcontent h3 {
+  margin-top: 0;
+}
+</style>
+
+<form action = "" class = "report-form" method = "POST" enctype = "multipart/form-data">
         {% csrf_token %}
-        
-        <div class = "report" id = "capture">
-            <div class = "card-header">
-                <header>Add required information</header>
-            </div>
 
-            <div class = "card-body">
-                <div class = "field">
-                    <div class = "column">
-                        <label for = "capture-date">Capture Date</label> 
-                            
-                        <div class = "capture-date">
-                            <input type = "datetime-local" value = "" id = "capture-date" name = "capture_date" required>                            
-                        </div>
-                    </div>
-
-                    <div class = "column">
-                        <label for = "description">Description</label> 
-                            
-                        <div class = "description">
-                            <input type = "text" value = "" id = "description" name = "description" required>
-                                
-                            <i class = "fa-solid fa-comments"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class = "report-gallery">
-                    <img class = "gallery-photo" src = "{% static 'assets/posts/default.png' %}"> 
-                </div>
-
-                <div class = "button">
-                    <label for = "post-photo" class = "capture-photo">Capture</label> 
+        <div class="tabs">
+            <button class="tablink active" onclick="openTab('tab1')">Tab 1</button>
+            <button class="tablink" onclick="openTab('tab2')">Tab 2</button>
+            <button class="tablink" onclick="openTab('tab3')">Tab 3</button>
+          </div>
+          
+          <div id="tab1" class="tabcontent">
+            <div class = "column">
+                <label for = "description">Description</label> 
                     
-                    <input type = "file" class = "post-photo" name = "post_photos" accept = "image/*" capture = "environment" required>
-                </div>
-
-                <div class = "field">
-                    <div class = "column">
-                        <label for = "latitude">Latitude</label> 
-                            
-                        <div class = "latitude">
-                            <input type = "text" value = "" id = "latitude" name = "latitude">
-                                
-                            <i class = "fa-solid fa-map-location-dot"></i>
-                        </div>
-                    </div>
-
-                    <div class = "column">
-                        <label for = "longitude">Longitude</label> 
-                            
-                        <div class = "longitude">
-                            <input type = "text" value = "" id = "longitude" name = "longitude">
-                                
-                            <i class = "fa-solid fa-map-location-dot"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class = "column">
-                    <label for = "location">Location</label> 
-
-                    <select name = "location" id = "location">
-                        <option disabled selected value = "">Choose location</option>
-
-                        {% for location in locations %}
-
-                        <option value="{{location.id}}">{{location}}</option>
+                <div class = "description">
+                    <input type = "text" value = "" id = "description" name = "description" required>
                         
-                        {% endfor %}
-                    </select>
+                    <i class = "fa-solid fa-comments"></i>
                 </div>
-
-                <div class = "map">
-                    <div class = "report-map">
-                    </div>
-                </div>
-
-                <div class = "button">
-                    <a class = "refresh-map" onclick = "refreshMap()">Refresh</a>
-                </div>
-            </div> 
-        </div>
-
-        <div class = "report" id = "capture">
-            <div class = "card-header">
-                <header>Add optional information</header>
             </div>
 
             <div class = "card-body">
@@ -150,11 +122,162 @@
                     </div>
                 </div>
 
+               
+            </div>
+
+
+            <button onclick="nextTab('tab1')">Next</button>
+          </div>
+          
+          <div id="tab2" class="tabcontent" style="display:none;">
+            
+            <div class = "field">
+                <div class = "column">
+                    <label for = "capture-date">Capture Date</label> 
+                        
+                    <div class = "capture-date">
+                        <input type = "datetime-local" value = "" id = "capture-date" name = "capture_date" required>                            
+                    </div>
+                </div>
+
+          
+            </div>
+
+            <div class = "report-gallery">
+                <img class = "gallery-photo" src = "{% static 'assets/posts/default.png' %}"> 
+            </div>
+
+            <div class = "button">
+                <label for = "post-photo" class = "capture-photo">Capture</label> 
+                
+                <input type = "file" class = "post-photo" name = "post_photos" accept = "image/*" capture = "environment" required>
+            </div>
+
+
+            <button onclick="nextTab('tab2')">Next</button>
+          </div>
+          
+          <div id="tab3" class="tabcontent" style="display:none;">
+            <div class = "card-body">
+                
+
+                <div class = "field">
+                    <div class = "column">
+                        <label for = "latitude">Latitude</label> 
+                            
+                        <div class = "latitude">
+                            <input type = "text" value = "" id = "latitude" name = "latitude">
+                                
+                            <i class = "fa-solid fa-map-location-dot"></i>
+                        </div>
+                    </div>
+
+                    <div class = "column">
+                        <label for = "longitude">Longitude</label> 
+                            
+                        <div class = "longitude">
+                            <input type = "text" value = "" id = "longitude" name = "longitude">
+                                
+                            <i class = "fa-solid fa-map-location-dot"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "column">
+                    <label for = "location">Location</label> 
+
+                    <select name = "location" id = "location">
+                        <option disabled selected value = "">Choose location</option>
+
+                        {% for location in locations %}
+
+                        <option value="{{location.id}}">{{location}}</option>
+                        
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class = "map">
+                    <div class = "report-map">
+                    </div>
+                </div>
+
+                <div class = "button">
+                    <a class = "refresh-map" onclick = "refreshMap()">Refresh</a>
+                </div>
+            </div> 
+            <div class = "button">
+                <a class = "save-report" type = "submit">Save</a>
+            </div>   
+          </div>
+<!--         
+        <div class = "report" id = "capture">
+            <div class = "card-header">
+                <header>Add required information</header>
+            </div>
+
+          
+        </div> -->
+
+        <!-- <div class = "report" id = "capture">
+            <div class = "card-header">
+                <header>Add optional information</header>
+            </div>
+
+            <div class = "card-body">
+                <div class = "field">
+                    <div class = "column">
+                        <label for = "size">Size / Centimeter</label> 
+                            
+                        <div class = "size">
+                            <input type = "number" value = "" id = "size" name = "size">
+                                
+                            <i class = "fa-solid fa-draw-polygon"></i>
+                        </div>
+
+                        <label for = "depth">Depth</label> 
+                            
+        
+
+                        <select name = "depth" id = "depth">
+                            <option disabled selected value>Choose depth</option>
+
+                            {% for depth in depths %}
+
+                            <option value="{{depth.id}}">{{depth}}</option>
+                            
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class = "column">
+                        <label for = "density">Density / Square Meter</label> 
+                            
+                        <div class = "density">
+                            <input type = "number" value = "" id = "density" name = "density">
+                                
+                            <i class = "fa-solid fa-braille"></i>
+                        </div>
+
+                        <label for = "weather">Weather</label> 
+                            
+            
+
+                        <select name = "weather" id = "weather">
+                            <option disabled selected value>Choose weather</option>
+
+                            {% for weather in weathers %}
+                                <option value="{{weather.id}}">{{weather}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
                 <div class = "button">
                     <a class = "save-report" type = "submit">Save</a>
                 </div>   
             </div>
-        </div>
+        </div> -->
     </form>
 
     {% if messages %}
@@ -342,6 +465,29 @@
     </script>
 
     <script>
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.classList.add("active");
+        }
+
+        function nextTab(currentTabId) {
+            var currentTab = document.getElementById(currentTabId);
+            var nextTab = currentTab.nextElementSibling;
+            openTab(nextTab.id);
+        }
+
+        openTab('tab1');
+
         const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
         
         const request = indexedDB.open("cotseye", 1);
