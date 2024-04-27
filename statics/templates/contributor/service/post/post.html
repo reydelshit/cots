@@ -124,7 +124,7 @@
 <!-- <div class = "line" id = "results"></div> -->
 
 {% for post in results %}
-<div class="border-2 h-fit w-full rounded-lg mt-[2rem]" id="post-records">
+<div class="border-2 h-fit w-full rounded-lg mt-[2rem] p-4" id="post-records">
     <div class="w-full ">
         <a href="{% url 'Contributor Service Post Read' post.id %}">
             <div class="flex items-center w-full gap-2 h-full p-2">
@@ -177,7 +177,7 @@
 <!-- <div class = "line" id = "records"></div> -->
 
 {% for post in records %}
-<div class="border-2 h-fit w-full rounded-lg mt-[2rem]" id="post-records">
+<div class="border-2 h-fit w-full rounded-lg mt-[2rem] p-4" id="post-records">
     <div class="w-full ">
         <a href="{% url 'Contributor Service Post Read' post.id %}">
             <div class="flex items-center w-full gap-2 h-full p-2">
