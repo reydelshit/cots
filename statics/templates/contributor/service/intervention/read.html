@@ -3,7 +3,39 @@
 
 {% block content %}
     {% if intervention %}
-        <div class = "intervention">
+
+    <div class="w-full mt-[2rem]">
+        <div class="w-full flex justify-center flex-col">
+    
+            <div class="flex justify-between w-full items-center">
+                <h1 class="text-start font-bold text-3x my-2 break-words w-[18rem]">{{intervention.title | default:'None available'}}</h1>
+    
+                <p class="flex items-center gap-2"><i class="fa-solid fa-calendar-check"></i>{{intervention.intervention_date | date:'M. j, Y' | default:'None available'}}</p>
+            </div>
+    
+            <p class="flex items-center gap-2"><i class="fa-solid fa-feather"></i>{{intervention.hosting_agency | default:'None available'}}</p>
+    
+    
+    
+            <p class="flex items-center gap-2"><i class = "fa-solid fa-location-dot"></i>{{intervention.location | default:'None available'}}</p>
+    
+            <div class="w-full flex justify-center">
+                <img class="h-[90%] w-[90%] object-cover my-[2rem] block" src="{{intervention.intervention_photo.url}}">
+    
+            </div>
+            <p class="w-full break-words">{{intervention.details | default:'None available'}}</p>
+            <p class="flex items-center gap-2 font-bold my-[2rem]"><i class = "fa-solid fa-arrow-up-wide-short"></i>{{intervention.caught_amount | default:'None available'}} COTS caught.</p>
+    
+            <div class="w-full justify-end flex my-[2rem]">
+                <div
+                    class="text-center buttons cursor-pointer w-fit bg-blue-600 hover:bg-white hover:border-blue-600 border-2 p-2 rounded-xl font-bold text-white hover:text-blue-600">
+                    <a class="share-intervention" target="blank">Share</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- <div class = "intervention">
             <div class = "card-body">
                 <header>{{intervention.title | default:'None available'}}</header>
 
@@ -15,7 +47,7 @@
 
                 <img src = "{{intervention.intervention_photo.url}}">
 
-                <p>{{intervention.details | default:'None available'}}</p>
+                <p class="break-words w-full">{{intervention.details | default:'None available'}}</p>
 
                 <p><i class = "fa-solid fa-arrow-up-wide-short"></i>{{intervention.caught_amount | default:'None available'}} COTS caught.</p>
 
@@ -23,7 +55,7 @@
                     <a class = "share-intervention" target = "blank">Share</a>
                 </div>
             </div>
-        </div>
+        </div> -->
     {% endif %}
 
     <script>

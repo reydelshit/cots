@@ -2,10 +2,291 @@
 {% load static %}
 
 {% block content %}
+
+<style>
+    .tabs {
+        overflow: hidden;
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0
+    }
+
+    .tablink {
+        width: 100%;
+        background-color: #2563eb;
+        float: left;
+        border: 1px solid #ccc;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        transition: background-color 0.3s;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .tablink:hover {
+        background-color: #ddd;
+    }
+
+    .tablink.active {
+        background-color: #779df1;
+    }
+
+    .tabcontent {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-top: -1px;
+        border-radius: 8px;
+    }
+
+    .tabcontent h3 {
+        margin-top: 0;
+    }
+</style>
+
+
     <form action = "" class = "report-form" method = "POST" enctype = "multipart/form-data">
         {% csrf_token %}
 
-        <div class = "report" id = "choose">
+        <form action="" class="report-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            <div class="tabs">
+                <button class="tablink active" onclick="openTab('tab1')">Details</button>
+                <button class="tablink" onclick="openTab('tab2')">Image</button>
+                <button class="tablink" onclick="openTab('tab3')">Location</button>
+            </div>
+        
+            <div id="tab1" class="tabcontent w-full">
+                <div class="w-full flex flex-col">
+        
+                    <label class="font-bold my-2" for="description">Description <i class="fa-solid fa-comments"></i></label>
+        
+                    <textarea class="border-2 p-2 h-[8rem] rounded-md" type="text" value="" id="description" name="description"
+                        required>
+                            </textarea>
+                </div>
+        
+                <h1 class="font-bold my-2">Optional Details:</h1>
+        
+                <div class="flex flex-col gap-4">
+                    <input placeholder="Density" class="h-[2.5rem] border-2 p-2 rounded-md" type="number" value="" id="density" name="density">
+                    <input placeholder="Size" class="h-[2.5rem] border-2 p-2 rounded-md" type="number" value="" id="size" name="size">
+                    <select class="h-[2.5rem] border-2 p-2 rounded-md" name="depth" id="depth">
+                        <option disabled selected value>Depth</option>
+        
+                        {% for depth in depths %}
+        
+                        <option value="{{depth.id}}">{{depth}}</option>
+        
+                        {% endfor %}
+                    </select>
+        
+                    <select class="h-[2.5rem] border-2 p-2 rounded-md" name="weather" id="weather">
+                        <option disabled selected value>Weather</option>
+        
+                        {% for weather in weathers %}
+                        <option value="{{weather.id}}">{{weather}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+        
+        
+                <!-- <div class = "card-body">
+                        <div class = "field">
+                            <div class = "column">
+                            
+        
+                                <label for = "depth">Depth</label> 
+                                    
+                                <div class = "depth">
+                                    <input type = "text" value = "" id = "depth" name = "depth">
+                                        
+                                    <i class = "fa-solid fa-arrow-down-wide-short"></i>
+                                </div>
+        
+                             
+                            </div>
+        
+                            <div class = "column">
+                                <label for = "density">Density / Square Meter</label> 
+                                    
+                                <div class = "density">
+                                    <input type = "number" value = "" id = "density" name = "density">
+                                        
+                                    <i class = "fa-solid fa-braille"></i>
+                                </div>
+        
+                                <label for = "weather">Weather</label> 
+                                    
+                                <div class = "weather">
+                                    <input type = "text" value = "" id = "weather" name = "weather">
+                                        
+                                    <i class = "fa-solid fa-temperature-high"></i>
+                                </div>
+        
+                            
+                            </div>
+                        </div>
+        
+                       
+                    </div> -->
+        <div class="w-full flex justify-end my-[2rem]">
+            <button class="border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab1')">Next</button>
+        
+        </div>
+        
+            </div>
+        
+            <div id="tab2" class="tabcontent w-full" style="display:none;">
+        
+                <div class="w-full border-2 p-2 my-2 rounded-md flex-col flex items-center">
+                    <label for="post-photo" class="capture-photo hover:border-2 w-full my-2 h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">Capture</label>
+        
+                    <input type="file" class="post-photo w-full border-2 p-2 rounded-md" name="post_photos" accept="image/*" capture="environment" required>
+                </div>
+        
+        
+                <div class="flex items-center justify-between w-full h-[4rem] border-2 p-2 rounded-md">
+                    <label for="capture-date">Capture Date</label>
+        
+                    <div class="cursor-pointer">
+                        <input type="datetime-local" value="" id="capture-date" name="capture_date" required>
+                    </div>
+                </div>
+                <div class="report-gallery">
+                    <img class="gallery-photo" src="{% static 'assets/posts/default.png' %}">
+                </div>
+        
+              
+        
+        
+                <div class="w-full flex justify-end my-[2rem]">
+                    <button class="border-2 max-w-[15rem] h-[3rem] text-white bg-blue-500 text-blue font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab2')">Next</button>
+                
+                </div>
+            </div>
+        
+            <div id="tab3" class="tabcontent w-full" style="display:none;">
+
+                <div class="latitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
+                    <input type="text" value="" id="latitude" name="latitude">
+
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+
+                <div class="longitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
+                    <input type="text" value="" id="longitude" name="longitude">
+
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+
+                <select  class="h-[2.5rem] border-2 p-2 rounded-md my-2 w-full" name = "location" id = "location">
+                    <option disabled selected value = "">Choose location</option>
+
+                    {% for location in locations %}
+
+                    <option value="{{location.id}}">{{location}}</option>
+                    
+                    {% endfor %}
+                </select>
+
+                <div class="map w-full">
+                    <div class="report-map w-full">
+                    </div>
+                </div>
+
+                
+          <div class="flex w-full justify-end my-2"> 
+            <div class="border-2 w-fit h-[3rem] bg-green-500 text-white font-bold hover:bg-white hover:border-green-600 hover:text-green-600 text-center cursor-pointer p-2 rounded-lg">
+                <a class="refresh-map" onclick="refreshMap()">Refresh</a>
+            </div>
+          </div>
+
+               <div class="flex w-full justify-center">
+                <div class="border-2 w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    <a class="save-report" type="submit">Save</a>
+                </div>
+               </div>
+
+
+
+            
+            </div>
+            <!--         
+                <div class = "report" id = "capture">
+                    <div class = "card-header">
+                        <header>Add required information</header>
+                    </div>
+        
+                  
+                </div> -->
+        
+            <!-- <div class = "report" id = "capture">
+                    <div class = "card-header">
+                        <header>Add optional information</header>
+                    </div>
+        
+                    <div class = "card-body">
+                        <div class = "field">
+                            <div class = "column">
+                                <label for = "size">Size / Centimeter</label> 
+                                    
+                                <div class = "size">
+                                    <input type = "number" value = "" id = "size" name = "size">
+                                        
+                                    <i class = "fa-solid fa-draw-polygon"></i>
+                                </div>
+        
+                                <label for = "depth">Depth</label> 
+                                    
+                
+        
+                                <select name = "depth" id = "depth">
+                                    <option disabled selected value>Choose depth</option>
+        
+                                    {% for depth in depths %}
+        
+                                    <option value="{{depth.id}}">{{depth}}</option>
+                                    
+                                    {% endfor %}
+                                </select>
+                            </div>
+        
+                            <div class = "column">
+                                <label for = "density">Density / Square Meter</label> 
+                                    
+                                <div class = "density">
+                                    <input type = "number" value = "" id = "density" name = "density">
+                                        
+                                    <i class = "fa-solid fa-braille"></i>
+                                </div>
+        
+                                <label for = "weather">Weather</label> 
+                                    
+                    
+        
+                                <select name = "weather" id = "weather">
+                                    <option disabled selected value>Choose weather</option>
+        
+                                    {% for weather in weathers %}
+                                        <option value="{{weather.id}}">{{weather}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class = "button">
+                            <a class = "save-report" type = "submit">Save</a>
+                        </div>   
+                    </div>
+                </div> -->
+        </form>
+
+        <!-- <div class = "report" id = "choose">
 
             <div class = "card-header">
                 <header>Add required information</header>
@@ -87,9 +368,9 @@
                     <a class = "refresh-map">Refresh</a>
                 </div>
             </div> 
-        </div>
+        </div> -->
 
-        <div class = "report" id = "choose">
+        <!-- <div class = "report" id = "choose">
             <div class = "card-header">
                 <header>Add optional information</header>
             </div>
@@ -107,11 +388,11 @@
 
                         <label for = "depth">Depth</label> 
                             
-                        <!-- <div class = "depth">
+                      <div class = "depth">
                             <input type = "text" value = "" id = "depth" name = "depth">
                                 
                             <i class = "fa-solid fa-arrow-down-wide-short"></i>
-                        </div> -->
+                        </div> 
 
                         <select name = "depth" id = "depth">
                             <option disabled selected value = "">Choose depth</option>
@@ -135,11 +416,11 @@
 
                         <label for = "weather">Weather</label> 
                             
-                        <!-- <div class = "weather">
+                      <div class = "weather">
                             <input type = "text" value = "" id = "weather" name = "weather">
                                 
                             <i class = "fa-solid fa-temperature-high"></i>
-                        </div> -->
+                        </div> 
 
                         <select name = "weather" id = "weather">
                             <option disabled selected value = "">Choose weather</option>
@@ -157,7 +438,7 @@
                     <a class = "save-report" type = "submit">Save</a>
                 </div>   
             </div>
-        </div>
+        </div> -->
     </form>
 
     {% if messages %}
@@ -173,6 +454,28 @@
     {% endif %}
 
     <script>
+
+            function openTab(tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.classList.add("active");
+    }
+
+    function nextTab(currentTabId) {
+        var currentTab = document.getElementById(currentTabId);
+        var nextTab = currentTab.nextElementSibling;
+        openTab(nextTab.id);
+    }
+
+    openTab('tab1');
         const browsePhoto = document.querySelector(".post-photo");
         
         const reportGallery = document.querySelector(".report-gallery");

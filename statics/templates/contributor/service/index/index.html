@@ -83,7 +83,9 @@
     <body>
         <nav>
             <div class = "navigation-bar">
-                <span class = "navigation-logo"><a href = "{% url 'Contributor Service Home' %}"><img src = "{% static 'assets/icons/logo.png' %}" alt = "navigation-logo"></a></span>
+                <a href = "{% url 'Contributor Service Home' %}">
+                    <img class="h-[4rem] w-[4rem]" src = "{% static 'assets/logo.jpg' %}" alt = "navigation-logo">
+                </a>
 
                 <div class = "navigation-menu bg-orange">
                     <div class = "menu bg-orange-400 ">

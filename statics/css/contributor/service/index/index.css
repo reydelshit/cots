@@ -11,6 +11,11 @@
     transition: all 0.25s ease;
 }
 
+body{
+    background: #0C0C0C;
+    color: white;
+}
+
 
 ::-webkit-scrollbar{
     width: 5px !important;

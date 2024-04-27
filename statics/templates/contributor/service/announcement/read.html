@@ -2,35 +2,45 @@
 {% load static %}
 
 {% block content %}
-    {% if announcement %}
-        <div class = "announcement">
-            <div class = "card-body">
-                <header>{{announcement.title | default:'None available'}}</header>
+{% if announcement %}
+<div class="w-full mt-[2rem]">
+    <div class="w-full flex justify-center flex-col">
 
-                <p><i class = "fa-solid fa-feather"></i>{{announcement.user | default:'None available'}}</p>
+        <div class="flex justify-between w-full items-center">
+            <header class="text-start font-bold text-3xl">{{announcement.title | default:'None available'}}</header>
 
-                <p><i class = "fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+            <p><i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+        </div>
 
-                <p><i class = "fa-solid fa-location-dot"></i>{{announcement.place | default:'None available'}}</p>
+        <p><i class="fa-solid fa-feather"></i>{{announcement.user | default:'None available'}}</p>
 
-                <img src = "{{announcement.announcement_photo.url}}">
 
-                <p>{{announcement.context | default:'None available'}}</p>
 
-                <div class = "buttons">
-                    <a class = "share-announcement" target = "blank">Share</a>
-                </div>
+        <p><i class="fa-solid fa-location-dot"></i>{{announcement.place | default:'None available'}}</p>
+
+        <div class="w-full flex justify-center">
+            <img class="h-[90%] w-[90%] object-cover my-[2rem] block" src="{{announcement.announcement_photo.url}}">
+
+        </div>
+        <p>{{announcement.context | default:'None available'}}</p>
+
+        <div class="w-full justify-end flex my-[2rem]">
+            <div
+                class="text-center buttons cursor-pointer w-fit bg-blue-600 hover:bg-white hover:border-blue-600 border-2 p-2 rounded-xl font-bold text-white hover:text-blue-600">
+                <a class="share-announcement" target="blank">Share</a>
             </div>
         </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+    {% if announcement %}
+    const link = encodeURI("{{scheme}}://{{host}}{% url 'Contributor Service Announcement Read' announcement.id %}");
+
+    const facebook = document.querySelector(".share-announcement");
+
+    facebook.href = "https://www.facebook.com/share.php?u=" + link;
     {% endif %}
-
-    <script>
-        {% if announcement %}
-            const link = encodeURI("{{scheme}}://{{host}}{% url 'Contributor Service Announcement Read' announcement.id %}");
-        
-            const facebook = document.querySelector(".share-announcement");
-
-            facebook.href = "https://www.facebook.com/share.php?u=" + link;
-        {% endif %}
-    </script>
+</script>
 {% endblock content %}

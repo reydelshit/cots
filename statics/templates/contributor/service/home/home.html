@@ -2,288 +2,415 @@
 {% load static %}
 
 {% block content %}
-    <div class = "home">
-        <div class = "section-header">
-            <header>COTSEYE</header>
-        </div>
 
-        <div class = "section-body">
-            <p>Discover latest announcements, interventions, statuses, and posts here.</p>
+<style>
+    .map:has(.contributor-map) {
+        width: 100%;
+        height: 50vh;
+        margin-bottom: 30px;
+    }
+
+    .contributor-map {
+        min-width: 100%;
+        height: 50vh;
+        border: 1px solid #B2BEB5;
+        border-radius: 5px;
+        box-shadow: 0 0 0 1px #B2BEB5 !important;
+        z-index: 1;
+    }
+
+
+    @media screen and (min-width: 320px) and (max-width: 775px) {
+        .contributor-map {
+            min-width: 100%;
+            height: 20vh;
+            z-index: 1;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 775px) {
+        .contributor-map {
+            min-width: 100%;
+            height: 20vh;
+            z-index: 1;
+        }
+    }
+</style>
+
+<div class="h-dvh w-dvw p-2">
+
+
+    <div class="w-full text-center my-[2rem] flex items-center justify-center flex-col">
+        <h1 class="text-center font-bold text-[3rem] tracking-widest">COTSEYE</h1>
+        <p class="w-[80%]">Discover latest announcements, interventions, statuses, and posts here.</p>
+
+
+        <div class="w-[4rem] h-[10px] bg-blue-600 mt-[2rem] block">
+
         </div>
     </div>
 
-    <div class = "map">
-        <div class = "contributor-map">
+    <div class="map">
+        <div class="contributor-map">
         </div>
     </div>
 
     <script>
-        function revealMap(){    
+        function revealMap() {
             statuses = L.layerGroup();
 
             var status = L.geoJSON([{
-                "type": "FeatureCollection", 
-                            
+                "type": "FeatureCollection",
+
                 "features": [
                     {% for status in statuses %}
-                        {"type": "Feature", "properties": {"barangay": "{{status.location.barangay}}", "municipality": "{{status.location.municipality}}", "caught_overall": "{{status.caught_overall}}", "statustype": "{{status.statustype}}", "onset_date": "{{status.onset_date}}"}, "geometry": {"type": "Polygon", "coordinates": {{status.location.perimeters}}}}, 
-                    {% endfor %}
+                        { "type": "Feature", "properties": { "barangay": "{{status.location.barangay}}", "municipality": "{{status.location.municipality}}", "caught_overall": "{{status.caught_overall}}", "statustype": "{{status.statustype}}", "onset_date": "{{status.onset_date}}" }, "geometry": { "type": "Polygon", "coordinates": {{ status.location.perimeters }}}},
+        {% endfor %}
                 ]
 
             }], {
-                style: function(feature){
-                    var status = feature.properties.statustype;
+            style: function(feature) {
+                var status = feature.properties.statustype;
 
-                    var fillings = "";
+                var fillings = "";
 
-                    if(status === "Critical"){
-                        fillings = "#C90016";
-                        
-                    } else if(status === "Moderate"){
-                        fillings = "#F4C430";
+                if (status === "Critical") {
+                    fillings = "#C90016";
 
-                    } else if(status === "Low"){
-                        fillings = "#698F3F";
-                    
-                    } else{
-                        fillings = "#154360";
-                    }
+                } else if (status === "Moderate") {
+                    fillings = "#F4C430";
 
-                    return{
-                        color: "#10354C", 
-                        
-                        weight: 2.5, 
+                } else if (status === "Low") {
+                    fillings = "#698F3F";
 
-                        fillColor: fillings, 
-
-                        fillOpacity: 0.25
-                    };
-                }, 
-
-                onEachFeature: function (feature, layer){
-                    layer.on({
-                        mouseover: highlightBarangay, 
-
-                        mouseout: resetBarangay, 
-
-                        click: zoomBarangay
-                    });
+                } else {
+                    fillings = "#154360";
                 }
-            });
 
-            function highlightBarangay(click){
-                var layer = click.target;
+                return {
+                    color: "#10354C",
 
-                layer.setStyle({
-                    color: "#10354C", 
+                    weight: 2.5,
 
-                    weight: 5, 
-                    
-                    fillOpacity: 0.75
+                    fillColor: fillings,
+
+                    fillOpacity: 0.25
+                };
+            },
+
+            onEachFeature: function (feature, layer) {
+                layer.on({
+                    mouseover: highlightBarangay,
+
+                    mouseout: resetBarangay,
+
+                    click: zoomBarangay
                 });
-
-                layer.bringToFront();
-
-                datum.update(layer.feature.properties);
             }
+        });
 
-            function resetBarangay(click){
-                status.resetStyle(click.target);
+        function highlightBarangay(click) {
+            var layer = click.target;
 
-                datum.update();
-            }
+            layer.setStyle({
+                color: "#10354C",
 
-            function zoomBarangay(click){
-                map.fitBounds(click.target.getBounds());
-            }
+                weight: 5,
 
-            status.addTo(statuses);
-
-            var starfish = L.icon({iconUrl: "{% static 'assets/icons/marker.png' %}", iconSize: [30, 30], iconAnchor: [15, 15]});
-            
-            var posts = L.markerClusterGroup({iconCreateFunction: function(cluster){return starfish}});
-
-            {% for post in posts %}
-                var post = L.marker([{{post.coordinates.latitude}}, {{post.coordinates.longitude}}], {icon: starfish});
-                
-                post.bindPopup("<div class = 'popup'>" + "<div class = 'card-header'>" + "<header class = 'preview'>" + "{{post.description}}" + "</header>" + "</div>" + "<div class = 'card-body'>" + "<div class = 'field'>" + "<div class = 'column'>" + "<label for = 'capture-date'>" + "Capture Date" + "</label>" + "<div class = 'capture-date'>" + "<input type = 'text' value = '{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}' id = 'capture-date' name = 'capture-date' readonly>" + "<i class = 'fa-solid fa-calendar-day'>" + "</i>" + "</div>" + "<label for = 'coordinates'>" + "Coordinates" + "</label>" + "<div class = 'coordinates'>" + "<input type = 'text' value = '{{post.coordinates.latitude | default:'0'}}° N, {{post.coordinates.longitude | default:'0'}}° E' id = 'coordinates' name = 'coordinates' readonly>" + "<i class = 'fa-solid fa-location-dot'>" + "</i>" + "</div>" + "</div>" + "</div>" + "<div class = 'button'>" + "<a class = 'read-post' href = '{% url 'Post Valid Read Redirect' %}'>" + "Read" + "</a>" + "</div>" + "</div>").openPopup();
-
-                posts.addLayer(post);
-            {% endfor %}
-
-            var contributorMap = document.getElementsByClassName("contributor-map")[0];
-
-            var background = L.tileLayer("http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}", {minZoom: 11, maxZoom: 15, subdomains:["mt0", "mt1", "mt2", "mt3"], attribution: "Google"});
-
-            var map = L.map(contributorMap, {zoomControl: true, scrollWheelZoom: false, dragging: true, maxBounds: [[5.3, 124.3], [6.3, 126.3]], layers: [background, posts]}).setView([5.9656, 125.1929], 11);
-            
-            map.on("popupopen", function(event){
-                var popup = map.project(event.target._popup._latlng);
-                
-                popup.y -= event.target._popup._container.clientHeight / 2;
-                
-                map.panTo(map.unproject(popup), {animate: true});
+                fillOpacity: 0.75
             });
 
-            map.attributionControl.setPosition("bottomleft");
+            layer.bringToFront();
 
-            var bases = {};
-            
-            var overlays = {
-                "Posts": posts, 
-
-                "Statuses": statuses
-            };
-
-            var management = L.control.layers(bases, overlays).addTo(map);
-
-            management.setPosition("bottomright");
-
-            var datum = L.control({position: "topright"});
-
-            datum.onAdd = function (map){
-                this._div = L.DomUtil.create("div", "datum");
-                
-                this.update();
-                
-                return this._div;
-            };
-
-            datum.update = function (property){
-                if (map.hasLayer(statuses)){
-                    this._div.style.display = "block";
-
-                    this._div.innerHTML = (property ? "<header>" + property.statustype + " Status" + "</header>" + "<p>" + "As of " + property.onset_date + "." + "</p>" + "<p>" + "Barangay " + property.barangay + ", " + property.municipality + "</p>" + "<i>" + property.caught_overall + " COTS overall" + "." + "</i>" : "<header>" + "Current Status" + "</header>" + "<p>" + "Hover to a coastal barangay." + "</p>");
-
-                    var status = property ? property.statustype : null;
-
-                    if(status === "Critical"){
-                        this._div.style.backgroundColor = "#C90016";
-                    
-                    } else if(status === "Moderate"){
-                        this._div.style.backgroundColor = "#F4C430"; 
-                    
-                    } else if(status === "Low"){
-                        this._div.style.backgroundColor = "#698F3F"; 
-
-                    } else{
-                        this._div.style.backgroundColor = "";
-                    }
-            
-                }  else{
-                    this._div.style.display = "none";
-                };
-            };
-
-            datum.addTo(map);
-
-            map.on("overlayadd overlayremove", function (event){
-                if (event.name === "Statuses"){
-                    datum.update();
-                };
-            });
+            datum.update(layer.feature.properties);
         }
 
-        window.addEventListener("load", function (){
+        function resetBarangay(click) {
+            status.resetStyle(click.target);
+
+            datum.update();
+        }
+
+        function zoomBarangay(click) {
+            map.fitBounds(click.target.getBounds());
+        }
+
+        status.addTo(statuses);
+
+        var starfish = L.icon({ iconUrl: "{% static 'assets/icons/marker.png' %}", iconSize: [30, 30], iconAnchor: [15, 15] });
+
+        var posts = L.markerClusterGroup({ iconCreateFunction: function (cluster) { return starfish } });
+
+        {% for post in posts %}
+        var post = L.marker([{{ post.coordinates.latitude }}, { { post.coordinates.longitude } }], { icon: starfish });
+
+        post.bindPopup("<div class = 'popup'>" + "<div class = 'card-header'>" + "<header class = 'preview'>" + "{{post.description}}" + "</header>" + "</div>" + "<div class = 'card-body'>" + "<div class = 'field'>" + "<div class = 'column'>" + "<label for = 'capture-date'>" + "Capture Date" + "</label>" + "<div class = 'capture-date'>" + "<input type = 'text' value = '{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}' id = 'capture-date' name = 'capture-date' readonly>" + "<i class = 'fa-solid fa-calendar-day'>" + "</i>" + "</div>" + "<label for = 'coordinates'>" + "Coordinates" + "</label>" + "<div class = 'coordinates'>" + "<input type = 'text' value = '{{post.coordinates.latitude | default:'0'}}° N, {{post.coordinates.longitude | default:'0'}}° E' id = 'coordinates' name = 'coordinates' readonly>" + "<i class = 'fa-solid fa-location-dot'>" + "</i>" + "</div>" + "</div>" + "</div>" + "<div class = 'button'>" + "<a class = 'read-post' href = '{% url 'Post Valid Read Redirect' %}'>" + "Read" + "</a>" + "</div>" + "</div>").openPopup();
+
+        posts.addLayer(post);
+        {% endfor %}
+
+        var contributorMap = document.getElementsByClassName("contributor-map")[0];
+
+        var background = L.tileLayer("http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}", { minZoom: 11, maxZoom: 15, subdomains: ["mt0", "mt1", "mt2", "mt3"], attribution: "Google" });
+
+        var map = L.map(contributorMap, { zoomControl: true, scrollWheelZoom: false, dragging: true, maxBounds: [[5.3, 124.3], [6.3, 126.3]], layers: [background, posts] }).setView([5.9656, 125.1929], 11);
+
+        map.on("popupopen", function (event) {
+            var popup = map.project(event.target._popup._latlng);
+
+            popup.y -= event.target._popup._container.clientHeight / 2;
+
+            map.panTo(map.unproject(popup), { animate: true });
+        });
+
+        map.attributionControl.setPosition("bottomleft");
+
+        var bases = {};
+
+        var overlays = {
+            "Posts": posts,
+
+            "Statuses": statuses
+        };
+
+        var management = L.control.layers(bases, overlays).addTo(map);
+
+        management.setPosition("bottomright");
+
+        var datum = L.control({ position: "topright" });
+
+        datum.onAdd = function (map) {
+            this._div = L.DomUtil.create("div", "datum");
+
+            this.update();
+
+            return this._div;
+        };
+
+        datum.update = function (property) {
+            if (map.hasLayer(statuses)) {
+                this._div.style.display = "block";
+
+                this._div.innerHTML = (property ? "<header>" + property.statustype + " Status" + "</header>" + "<p>" + "As of " + property.onset_date + "." + "</p>" + "<p>" + "Barangay " + property.barangay + ", " + property.municipality + "</p>" + "<i>" + property.caught_overall + " COTS overall" + "." + "</i>" : "<header>" + "Current Status" + "</header>" + "<p>" + "Hover to a coastal barangay." + "</p>");
+
+                var status = property ? property.statustype : null;
+
+                if (status === "Critical") {
+                    this._div.style.backgroundColor = "#C90016";
+
+                } else if (status === "Moderate") {
+                    this._div.style.backgroundColor = "#F4C430";
+
+                } else if (status === "Low") {
+                    this._div.style.backgroundColor = "#698F3F";
+
+                } else {
+                    this._div.style.backgroundColor = "";
+                }
+
+            } else {
+                this._div.style.display = "none";
+            };
+        };
+
+        datum.addTo(map);
+
+        map.on("overlayadd overlayremove", function (event) {
+            if (event.name === "Statuses") {
+                datum.update();
+            };
+        });
+        }
+
+        window.addEventListener("load", function () {
             revealMap();
         });
     </script>
 
-    <div class = "home">
-        <div class = "latest-intervention">
-            {% for intervention in latest_interventions %}
-                <div class = "intervention-gallery">
-                    <a href = "https://www.aims.gov.au/research-topics/marine-life/crown-thorns-starfish">
-                        <img src = "https://www.aims.gov.au/sites/default/files/styles/featured/public/2022-07/christianmiller_seasim-18_2000px_banner.jpg?itok=VbcNesIo">
-                    </a>
+    <div class="h-[20rem] w-full relative my-[2rem] rounded-md overflow-hidden">
+        <img class="h-full w-full hover:scale-125 transition-all duration-500 cursor-pointer"
+            src="/statics/assets/pic1.gif" alt="pic 1">
 
-                    <div class = "context">
-                        <header>COTS ARTICLE</header>
-
-                        <p>Insert description here.</p>
-                    </div>
-                </div>
-            {% endfor %}
+        <div class="bg-black bg-opacity-70 absolute bottom-0 h-[50%] p-4">
+            <h1 class="font-bold text-2xl text-white">COTS</h1>
+            <p class="break-words h-full w-full text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Alias necessitatibus dolorum molestiae natus,
+                asperiores hic repellendus inventore voluptatibus soluta minima id laborum. Veritatis accusantium iste
+                vel ratione</p>
         </div>
     </div>
 
-    <div class = "home">
-        <div class = "latest-announcement">
-            {% for announcement in latest_announcements %}
-                <div class = "announcement-gallery">
-                    <a href = "{% url 'Contributor Service Announcement Read' announcement.id %}">
-                        <img src = "{{announcement.announcement_photo.url}}">
-                    </a> 
 
-                    <div class = "context">
-                        <header>ANNOUNCEMENT</header>
 
-                        <p>{{announcement.title | default:'None available'}}</p>
-                    </div>
-                </div>
-            {% endfor %}
+    {% for intervention in latest_interventions %}
+    <div class="h-[20rem] w-full relative my-[2rem] rounded-md overflow-hidden">
+        <img class="h-full w-full hover:scale-125 transition-all duration-500 cursor-pointer"
+            src="/statics/assets/pic2.jpg" alt="pic 1">
+
+        <div class="bg-black bg-opacity-70 absolute bottom-0 h-[50%] p-4">
+            <h1 class="font-bold text-2xl text-white">COTS ARITCLE</h1>
+            <p class="break-words h-full w-full text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Alias necessitatibus dolorum molestiae natus,
+                asperiores hic repellendus inventore voluptatibus soluta minima id laborum. Veritatis accusantium iste
+                vel ratione</p>
         </div>
     </div>
+    {% endfor %}
 
-    <div class = "home">
-        <div class = "context">
+
+    <div>
+        <h1 class="border-l-4 border-blue-600 font-bold text-start pl-2 text-3xl my-[2rem]">ANNOUNCEMENTS</h1>
+
+        {% for announcement in latest_announcements %}
+        <a class="mb-[2rem] block" href="{% url 'Contributor Service Announcement Read' announcement.id %}">
+            <div class="flex gap-4 w-full items-center border-b-2 border-blue-300 p-2 ml-[1rem] relative ">
+
+                <p class="absolute top-5 right-5 text-sm">{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+
+
+                <img class="h-[6rem] w-[6rem] object-cover" src="{{announcement.announcement_photo.url}}">
+
+
+                <div class="w-full">
+                    <h1 class="font-bold">{{announcement.title | default:'None available'}}</h1>
+                    <p>{{announcement.context | default:'None available'}}</p>
+
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
+
+    <div>
+        <h1 class="border-l-4 border-blue-600 font-bold text-start pl-2 text-3xl my-[2rem]">POSTS</h1>
+
+        <!-- starts diri  -->
+        <a class="mb-[2rem] block">
+            <div class="flex gap-4 w-full items-center border-b-2 border-blue-300 p-2 ml-[1rem] relative ">
+
+                <p class="absolute top-5 right-5 text-sm">DATE DITO</p>
+
+
+                <img class="h-[6rem] w-[6rem] object-cover" src="/statics/assets/pic3.jpg">
+
+
+                <div class="w-full">
+                    <h1 class="font-bold">USER NAME</h1>
+                    <p>DESCRIPTION</p>
+
+                </div>
+            </div>
+        </a>
+
+        <!-- starts diri  -->
+        <a class="mb-[2rem] block">
+            <div class="flex gap-4 w-full items-center border-b-2 border-blue-300 p-2 ml-[1rem] relative ">
+
+                <p class="absolute top-5 right-5 text-sm">DATE DITO</p>
+
+
+                <img class="h-[6rem] w-[6rem] object-cover" src="/statics/assets/pic3.jpg">
+
+
+                <div class="w-full">
+                    <h1 class="font-bold">USER NAME</h1>
+                    <p>DESCRIPTION</p>
+
+                </div>
+            </div>
+        </a>
+
+        <!-- starts diri  -->
+        <a class="mb-[2rem] block">
+            <div class="flex gap-4 w-full items-center border-b-2 border-blue-300 p-2 ml-[1rem] relative ">
+
+                <p class="absolute top-5 right-5 text-sm">DATE DITO</p>
+
+
+                <img class="h-[6rem] w-[6rem] object-cover rounded-md" src="/statics/assets/pic3.jpg">
+
+
+                <div class="w-full">
+                    <h1 class="font-bold">USER NAME</h1>
+                    <p>DESCRIPTION</p>
+
+                </div>
+            </div>
+        </a>
+
+
+    </div>
+
+    <!-- <div class="home">
+        <div class="context">
             <header>POSTS</header>
         </div>
 
         {% for post in valid_posts %}
-            <div class = "list">
-                <a href = "{% url 'Contributor Service Post Feed Read' post.id %}">
-                    <div class = "field">
-                        <div class = "column">
-                            <div class = "post-gallery">
-                                {% for post_photo in post.post_photos.all %}
-                                    <img class = "gallery-photo" src = "{{post_photo.post_photo.url}}">
-                                {% endfor %}      
-                            </div>  
-                        </div>
-                        
-                        <div class = "column">
-                            <label for = "user">User</label> 
-                                
-                            <div class = "user">
-                                <input type = "text" value = "{{post.user | default:'None available'}}" id = "user" name = "user" readonly>
-                                    
-                                <i class = "fa-solid fa-user"></i>
-                            </div>
-
-                            <label for = "capture-date">Capture Date</label> 
-                                
-                            <div class = "capture-date">
-                                <input type = "text" value = "{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}" id = "capture-date" name = "capture_date" readonly>
-                                    
-                                <i class = "fa-solid fa-calendar-check"></i>
-                            </div>
-
-                            <label for = "location">Location</label> 
-                                
-                            <div class = "location">
-                                <input type = "text" value = "{{post.location | default:'None available'}}" id = "location" name = "location" readonly>
-                                    
-                                <i class = "fa-solid fa-location-dot"></i>
-                            </div>
+        <div class="list">
+            <a href="{% url 'Contributor Service Post Feed Read' post.id %}">
+                <div class="field">
+                    <div class="column">
+                        <div class="post-gallery">
+                            {% for post_photo in post.post_photos.all %}
+                            <img class="gallery-photo" src="{{post_photo.post_photo.url}}">
+                            {% endfor %}
                         </div>
                     </div>
-                </a>
-            </div>
+
+                    <div class="column">
+                        <label for="user">User</label>
+
+                        <div class="user">
+                            <input type="text" value="{{post.user | default:'None available'}}" id="user" name="user"
+                                readonly>
+
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <label for="capture-date">Capture Date</label>
+
+                        <div class="capture-date">
+                            <input type="text"
+                                value="{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}"
+                                id="capture-date" name="capture_date" readonly>
+
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <label for="location">Location</label>
+
+                        <div class="location">
+                            <input type="text" value="{{post.location | default:'None available'}}" id="location"
+                                name="location" readonly>
+
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
         {% endfor %}
-    </div>
+    </div> -->
 
     {% if messages %}
-        {% for message in messages %}
-            {% if message.tags == "info" %}<script>Swal.fire({title: "Hey!", text: "{{message}}", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: {confirmButton: "info-button", title: "title"}})</script>
-            
-            {% elif message.tags == "success" %}<script>Swal.fire({title: "Yay!", text: "{{message}}", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: {confirmButton: "success-button", title: "title"}})</script>
-            
-            {% else %}<script>Swal.fire({title: "Oops!", text: "{{message}}", background: "#FFFFFF", icon: "error", iconColor: "#C90016", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#C90016", customClass: {confirmButton: "error-button", title: "title"}})</script>
-            
-            {% endif %}    
-        {% endfor %}
+    {% for message in messages %}
+    {% if message.tags == "info" %}
+    <script>Swal.fire({ title: "Hey!", text: "{{message}}", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: { confirmButton: "info-button", title: "title" } })</script>
+
+    {% elif message.tags == "success" %}
+    <script>Swal.fire({ title: "Yay!", text: "{{message}}", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: { confirmButton: "success-button", title: "title" } })</script>
+
+    {% else %}
+    <script>Swal.fire({ title: "Oops!", text: "{{message}}", background: "#FFFFFF", icon: "error", iconColor: "#C90016", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#C90016", customClass: { confirmButton: "error-button", title: "title" } })</script>
+
+    {% endif %}
+    {% endfor %}
     {% endif %}
 
-    <script type = "text/javascript">if(window.location.hash && window.location.hash === "#_=_"){ window.location.hash = ""; history.pushState("", document.title, window.location.pathname);}</script>
+    <script
+        type="text/javascript">if (window.location.hash && window.location.hash === "#_=_") { window.location.hash = ""; history.pushState("", document.title, window.location.pathname); }</script>
+
+</div>
 {% endblock content %}

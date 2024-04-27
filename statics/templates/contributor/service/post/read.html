@@ -243,7 +243,7 @@
 
         </div>
         <div>
-            <div class="post-gallery">
+            <div class="post-gallery my-[2rem]">
                 {% for post_photo in draft_post.post_photos.all %}
                 <img class="gallery-photo" src="{{post_photo.post_photo.url}}">
                 {% endfor %}
@@ -289,7 +289,7 @@
             <div class="flex gap-4 mt-[5rem] justify-end">
 
                 <div
-                    class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    class="border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
                     <a href="{% url 'Contributor Service Post Draft Send' draft_post.id %}">Send</a>
                 </div>
 
