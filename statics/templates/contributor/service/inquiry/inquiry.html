@@ -4,33 +4,43 @@
 {% block content %}
     <div class="w-dvw px-[2rem]" id = "inquiry-search">
 
-        <h1 class="my-[4rem] text-center font-bold text-[3rem]">COTSEYE App FAQS</h1>
+        <div class="fixed inset-0 z-[-10] h-screen w-full">
+            <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+        </div>
 
-        <div class="h-fit my-[4rem] block w-full">
-            <h2 class="font-bold">COTSEYE:</h2>
+        <h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">FAQS</h1>
 
+        <div class="h-fit my-[4rem] block w-full bg-white rounded-xl pt-[4rem] px-[2rem]">
             <div class="flex gap-4 flex-col">
-                <div class="w-full items-start flex flex-col justify-start">
-                    <h3 class="font-bold">How to create an account?</h3>
-                    <p class="ml-4">YEah eayh</p>
+                <div class="w-full items-start flex flex-col justify-start border-b-4 border-blue-600">
+                    <h3 class="font-bold text-2xl uppercase tracking-wide">How to create an account?</h3>
+                    <p class=" text-blue-950 text-lg mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime possimus eum veniam, officia, 
+                        blanditiis voluptate, reiciendis nobis numquam facilis cupiditate fugiat facere id quidem quos?</p>
                 </div>
     
-                <div class="w-full items-start flex flex-col justify-start">
-                    <h3 class="font-bold">How to create an account?</h3>
-                    <p class="ml-4">YEah eayh</p>
-                </div>
-    
-                <div class="w-full items-start flex flex-col justify-start">
-                    <h3 class="font-bold">How to create an account?</h3>
-                    <p class="ml-4">YEah eayh</p>
-                </div>
-    
-                <div class="w-full items-start flex flex-col justify-start">
-                    <h3 class="font-bold">How to create an account?</h3>
-                    <p class="ml-4">YEah eayh</p>
+                <div class="w-full items-start flex flex-col justify-start border-b-4 border-blue-600">
+                    <h3 class="font-bold text-2xl uppercase tracking-wide">How to create an account?</h3>
+                    <p class=" text-blue-950 text-lg mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime possimus eum veniam, officia, 
+                        blanditiis voluptate, reiciendis nobis numquam facilis cupiditate fugiat facere id quidem quos?</p>
                 </div>
 
-                <img src="https://img-corp.com/images/logo@2x.png" alt="image">
+                <div class="w-full items-start flex flex-col justify-start border-b-4 border-blue-600">
+                    <h3 class="font-bold text-2xl uppercase tracking-wide">How to create an account?</h3>
+                    <p class=" text-blue-950 text-lg mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime possimus eum veniam, officia, 
+                        blanditiis voluptate, reiciendis nobis numquam facilis cupiditate fugiat facere id quidem quos?</p>
+                </div>
+
+                <div class="w-full items-start flex flex-col justify-start border-b-4 border-blue-600">
+                    <h3 class="font-bold text-2xl uppercase tracking-wide">How to create an account?</h3>
+                    <p class=" text-blue-950 text-lg mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime possimus eum veniam, officia, 
+                        blanditiis voluptate, reiciendis nobis numquam facilis cupiditate fugiat facere id quidem quos?</p>
+                </div>
+
+                <div class="w-full items-start flex flex-col justify-start ">
+                    <h3 class="font-bold text-2xl uppercase tracking-wide">How to create an account?</h3>
+                    <p class=" text-blue-950 text-lg mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime possimus eum veniam, officia, 
+                        blanditiis voluptate, reiciendis nobis numquam facilis cupiditate fugiat facere id quidem quos?</p>
+                </div>
             </div>
             
             
@@ -83,7 +93,7 @@
     </script>
 
     {% if results %}
-        <div class = "line" id = "results"></div>
+        <!-- <div class = "line" id = "results"></div> -->
 
         {% for inquiry in results %}
             <div class = "inquiry">
@@ -98,7 +108,7 @@
         {% endfor %}
     
     {% else %}
-        <div class = "line" id = "records"></div>
+        <!-- <div class = "line" id = "records"></div> -->
 
         {% for inquiry in records %}
             <div class = "inquiry">

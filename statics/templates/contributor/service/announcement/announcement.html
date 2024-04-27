@@ -2,10 +2,17 @@
 {% load static %}
 
 {% block content %}
-<div class="w-dvw flex flex-col items-center justify-center p-4">
-    <h1 class="my-[2rem] text-center font-bold text-[3rem] ">ANNOUNCEMENT</h1>
-    <div id="announcement-filter">
-        <!-- <form action = "" class = "announcement-form" method = "GET">
+<div class="w-dvw flex flex-col items-center justify-center p-4 h-screen my-[2rem]">
+
+    <div class="fixed inset-0 z-[-10] h-screen w-full">
+        <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+    </div>
+
+
+
+    <h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">ANNOUNCEMENTS</h1>
+    <!-- <div id="announcement-filter">
+        <form action = "" class = "announcement-form" method = "GET">
             {% csrf_token %}
 
             <div class = "card-header">
@@ -35,8 +42,8 @@
                     <a class = "filter-announcements" type = "submit">Filter</a>
                 </div>    
             </div>
-        </form> -->
-    </div>
+        </form>
+    </div> -->
 
     {% if messages %}
     {% for message in messages %}
@@ -112,44 +119,44 @@
     <!-- <div class = "line" id = "records"></div> -->
 
     {% for announcement in records %}
-    <div class="w-full mb-[2rem] border-2 rounded-lg p-4" id="announcement-records">
+    <div class="w-full mb-[2rem] border-2 rounded-lg p-4 bg-white" id="announcement-records">
         <div class="w-full flex justify-between my-4 ">
 
             <div class="place">
-                <i class="fa-solid fa-location-dot"></i>
-                <input type="text" value="{{announcement.place | default:'None available'}}" id="place" name="place"
+                <i class="fa-solid fa-user"></i>
+                <input type="text" value="{{announcement.user | default:'None available'}}" id="place" name="place"
                     readonly>
-
 
             </div>
 
             <div>
+                <i class="fa-solid fa-calendar-check"></i>
 
                 <input type="text"
                     value="{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}"
                     id="release-date" name="release_date" readonly>
 
-                <i class="fa-solid fa-calendar-check"></i>
             </div>
         </div>
         <div class="flex items-center justify-center">
             <a class="w-full" href="{% url 'Contributor Service Announcement Read' announcement.id %}">
                 <div class="w-full flex justify-center flex-col items-center">
-                    <img class="h-[10rem]" src="{{announcement.announcement_photo.url}}">
 
-                    <div class="w-full flex justify-start flex-col items-start">
-                        <div class="w-full">
+                    <div class="w-full h-full flex justify-start flex-col items-start relative">
+                        <img class="h-[18rem] w-full object-cover" src="{{announcement.announcement_photo.url}}">
 
-                            <h1 class="font-bold text-2xl">{{announcement.title | default:'None available'}}</h1>
-                            <p class="indent-10">{{announcement.context | default:'None available'}}</p>
+                            <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
+                                <h1 class="font-bold text-2xl">{{announcement.title | default:'None available'}}</h1>
+                            
+                            </div>
 
+                    
                         </div>
 
-                        <div class="flex justify-end w-full">
-                            <button
-                                class="w-[10rem] bg-blue-600 hover:bg-white hover:border-blue-600 border-2 p-2 rounded-xl font-bold text-white hover:text-blue-600">Read More</button>
+                    <div class="flex justify-center w-full mt-[3rem]">
+                        <button
+                            class="w-[10rem] bg-blue-900 hover:bg-white hover:border-blue-900 border-2 p-2 rounded-full font-bold text-white hover:text-blue-600">Read More</button>
 
-                        </div>
                     </div>
 
 
