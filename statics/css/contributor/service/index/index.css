@@ -9,12 +9,13 @@
     scrollbar-width: thin !important;
     scrollbar-color: #698F3F white !important;
     transition: all 0.25s ease;
-}
 
+}
+/* 
 body{
     background: #0C0C0C;
     color: white;
-}
+} */
 
 
 ::-webkit-scrollbar{
@@ -64,7 +65,7 @@ nav .navigation-bar .navigation-logo img{
     margin-top: 0px;
     margin-bottom: 0px;   
     width: 30px !important;
-    height: 30px !important;
+    height: 20px !important;
 }
 
 nav .navigation-bar .navigation-logo img:hover{
