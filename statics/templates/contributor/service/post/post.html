@@ -5,37 +5,29 @@
 {% block content %}
 
 
+<div class="w-dvw " id="post-filter">
+
+    <div class="fixed inset-0 z-[-10] h-screen w-full">
+        <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+    </div>
 
 
-<div class="w-dvw" id="post-filter">
+    <div class="my-[2rem] flex w-full px-[1.8rem] items-center justify-center relative text-center">
+        <h1 class="font-bold text-[3rem] text-white text-center">MY POSTS</h1>
 
-    <h1 class="my-[2rem] text-center font-bold text-[3rem] ">MY POSTS</h1>
-
-    <div class="flex flex-row justify-end items-end pt-4 w-full p-4">
-        <div class="flex-none p-2">
+        <div class="p-2 absolute right-5">
             <button onclick="showDropdownOptions()"
-                class="flex flex-row justify-between w-fit px-2 py-2 text-gray-700 bg-white border-2 border-white rounded-md shadow focus:outline-none focus:border-blue-600">
-                <span class="select-none">FILTER POST (nworking)</span>
-
-                <svg id="arrow-down" class="hidden w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd" />
-                </svg>
-                <svg id="arrow-up" class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                        clip-rule="evenodd" />
-                </svg>
+                class="flex flex-row justify-between px-2 py-2 text-white rounded-md shadow focus:outline-none focus:border-[#003755]">
+                <span class=" text-white text-2xl"><i class="fa-solid fa-sliders"></i></span>
             </button>
-            <div id="options" class="hidden w-48 py-2 mt-2 bg-white rounded-lg shadow-xl">
-                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Valid Posts</a>
-                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Pending Posts</a>
+            <div id="options" class="hidden absolute left-[-9rem] w-48 py-2 mt-[1rem] bg-white rounded-lg shadow-xl">
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Valid Posts</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Pending Posts</a>
             </div>
         </div>
     </div>
+
+
     <!-- 
         <form action = "" class = "post-form" method = "GET">
             {% csrf_token %}
@@ -117,56 +109,69 @@
 </script>
 
 <div class="w-full flex justify-start items-start">
-    <h1 class="font-bold border-l-4 border-blue-600 pl-2">VALID or PENDING (nworking)</h1>
+    <h1 class="font-bold border-l-4 border-white pl-2 text-white">VALID or PENDING (nworking)</h1>
 </div>
 
 {% if results %}
 <!-- <div class = "line" id = "results"></div> -->
 
 {% for post in results %}
-<div class="border-2 h-fit w-full rounded-lg mt-[2rem] p-4" id="post-records">
+<div class="border-2 min-h-[20rem] w-full rounded-2xl mt-[2rem] p-4 bg-white" id="post-records">
     <div class="w-full ">
         <a href="{% url 'Contributor Service Post Read' post.id %}">
-            <div class="flex items-center w-full gap-2 h-full p-2">
-                <div>
-                    <div>
-                        {% for post_photo in post.post_photos.all %}
-                        <img class="w-[7rem]" src="{{post_photo.post_photo.url}}">
-                        {% endfor %}
+            <div class="flex items-center w-full gap-2 h-full p-2 flex-col">
+                <div class="flex w-full justify-between my-2">
+                    <h1 class="font-bold flex gap-2 items-center text-[#003755]"><i class="fa-regular fa-user"></i>
+                        @{{post.user | default:'None available'}}<h1>
+                            <p class="font-bold flex gap-2 items-center text-[#003755]"> <i
+                                    class="fa-solid fa-calendar-days"></i> {{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+                </div>
+
+                <div class="relative w-full h-full">
+                    {% for post_photo in post.post_photos.all %}
+                    <img class="w-full h-[15rem] object-cover" src="{{post_photo.post_photo.url}}">
+                    {% endfor %}
+
+                    <p
+                        class="font-bold absolute bottom-0 h-[4rem] bg-black bg-opacity-75 w-full flex items-center text-white text-2xl px-2">
+                        {{post.location | default:'None available'}}</p>
+                </div>
+
+                <button
+                    class="my-[1rem] border-2 w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer px-4 rounded-full">READ
+                    MORE</button>
+
+                <!-- <div class="w-full">
+
+
+                    <p class="text-end font-bold text-[#003755]">VALID(nworking)</p>
+
+
+                    <div class="user">
+                        <input type="text" value="" id="user" name="user" readonly>
+
+                        <i class="fa-solid fa-user"></i>
                     </div>
-                </div>
 
-                <div class="w-full">
-                    <h1 class="font-bold">@{{post.user | default:'None available'}}<h1>
-                            <p class="font-bold ml-[2rem]">{{post.capture_date | date:'M. j, Y, g:i a' | default:'None
-                                available'}}</p>
-                            <p class="font-bold ml-[2rem]">{{post.location | default:'None available'}}</p>
+                    <label for="capture-date">Capture Date</label>
 
-                            <p class="text-end font-bold text-blue-600">VALID(nworking)</p>
+                    <div class="capture-date">
+                        <input type="text"
+                            value="{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}"
+                            id="capture-date" name="capture_date" readonly>
 
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
 
-                            <!-- <div class = "user">
-                                <input type = "text" value = "" id = "user" name = "user" readonly>
-                                    
-                                <i class = "fa-solid fa-user"></i>
-                            </div> -->
+                    <label for="location">Location</label>
 
-                            <!-- <label for = "capture-date">Capture Date</label> 
-                                
-                            <div class = "capture-date">
-                                <input type = "text" value = "{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}" id = "capture-date" name = "capture_date" readonly>
-                                    
-                                <i class = "fa-solid fa-calendar-check"></i>
-                            </div>
+                    <div class="location">
+                        <input type="text" value="{{post.location | default:'None available'}}" id="location"
+                            name="location" readonly>
 
-                            <label for = "location">Location</label> 
-                                
-                            <div class = "location">
-                                <input type = "text" value = "{{post.location | default:'None available'}}" id = "location" name = "location" readonly>
-                                    
-                                <i class = "fa-solid fa-location-dot"></i>
-                            </div> -->
-                </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                </div> -->
             </div>
         </a>
     </div>
@@ -177,48 +182,62 @@
 <!-- <div class = "line" id = "records"></div> -->
 
 {% for post in records %}
-<div class="border-2 h-fit w-full rounded-lg mt-[2rem] p-4" id="post-records">
+<div class="border-2 min-h-[20rem] w-full rounded-2xl mt-[2rem] p-4 bg-white" id="post-records">
     <div class="w-full ">
         <a href="{% url 'Contributor Service Post Read' post.id %}">
-            <div class="flex items-center w-full gap-2 h-full p-2">
-                <div>
-                    <div>
-                        {% for post_photo in post.post_photos.all %}
-                        <img class="w-[7rem]" src="{{post_photo.post_photo.url}}">
-                        {% endfor %}
+            <div class="flex items-center w-full gap-2 h-full p-2 flex-col">
+                <div class="flex w-full justify-between my-2">
+                    <h1 class="font-bold flex gap-2 items-center text-[#003755]"><i class="fa-regular fa-user"></i>
+                        @{{post.user | default:'None available'}}<h1>
+                            <p class="font-bold flex gap-2 items-center text-[#003755]"> <i
+                                    class="fa-solid fa-calendar-days"></i> {{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+                </div>
+
+                <div class="relative w-full h-full">
+                    {% for post_photo in post.post_photos.all %}
+                    <img class="w-full h-[15rem] object-cover" src="{{post_photo.post_photo.url}}">
+                    {% endfor %}
+
+                    <p
+                        class="font-bold absolute bottom-0 h-[4rem] bg-black bg-opacity-75 w-full flex items-center text-white text-2xl px-2">
+                        {{post.location | default:'None available'}}</p>
+                </div>
+
+                <button
+                    class="my-[1rem] border-2 w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer px-4 rounded-full">READ
+                    MORE</button>
+
+                <!-- <div class="w-full">
+
+
+                    <p class="text-end font-bold text-[#003755]">VALID(nworking)</p>
+
+
+                    <div class="user">
+                        <input type="text" value="" id="user" name="user" readonly>
+
+                        <i class="fa-solid fa-user"></i>
                     </div>
-                </div>
 
-                <div class="w-full">
-                    <h1 class="font-bold">@{{post.user | default:'None available'}}<h1>
-                            <p class="font-bold ml-[2rem]">{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
-                            <p class="font-bold ml-[2rem]">{{post.location | default:'None available'}}</p>
+                    <label for="capture-date">Capture Date</label>
 
-                            <p class="text-end font-bold text-blue-600">VALID(nworking)</p>
+                    <div class="capture-date">
+                        <input type="text"
+                            value="{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}"
+                            id="capture-date" name="capture_date" readonly>
 
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
 
-                            <!-- <div class = "user">
-                                    <input type = "text" value = "" id = "user" name = "user" readonly>
-                                        
-                                    <i class = "fa-solid fa-user"></i>
-                                </div> -->
+                    <label for="location">Location</label>
 
-                            <!-- <label for = "capture-date">Capture Date</label> 
-                                    
-                                <div class = "capture-date">
-                                    <input type = "text" value = "{{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}" id = "capture-date" name = "capture_date" readonly>
-                                        
-                                    <i class = "fa-solid fa-calendar-check"></i>
-                                </div>
+                    <div class="location">
+                        <input type="text" value="{{post.location | default:'None available'}}" id="location"
+                            name="location" readonly>
 
-                                <label for = "location">Location</label> 
-                                    
-                                <div class = "location">
-                                    <input type = "text" value = "{{post.location | default:'None available'}}" id = "location" name = "location" readonly>
-                                        
-                                    <i class = "fa-solid fa-location-dot"></i>
-                                </div> -->
-                </div>
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                </div> -->
             </div>
         </a>
     </div>
@@ -229,12 +248,12 @@
 <div class="flex gap-4 mt-[5rem]">
 
     <div
-        class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+        class=" border-2 max-w-[15rem] h-[3rem] border-[#003755] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
         <a href="{% url 'Contributor Service Report' %}">Draft (wala pani ga function)</a>
     </div>
 
     <div
-        class=" border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+        class=" border-2 max-w-[15rem] h-[3rem] border-[#003755] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
         <a href="{% url 'Contributor Service Report' %}">Create post</a>
     </div>
 </div>
@@ -242,8 +261,8 @@
 <script>
     function showDropdownOptions() {
         document.getElementById("options").classList.toggle("hidden");
-        document.getElementById("arrow-up").classList.toggle("hidden");
-        document.getElementById("arrow-down").classList.toggle("hidden");
+        // document.getElementById("arrow-up").classList.toggle("hidden");
+        // document.getElementById("arrow-down").classList.toggle("hidden");
     }
 </script>
 

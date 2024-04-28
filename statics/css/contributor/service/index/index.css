@@ -25,15 +25,15 @@ body{
 
 ::-webkit-scrollbar-track{
     border-radius: 5px;
-    border: 1px solid #B2BEB5; 
-    box-shadow: 0 0 0 1px #B2BEB5 !important;
+    border: 1px solid #003755; 
+    box-shadow: 0 0 0 1px #003755 !important;
     background: white !important; 
 }
 
 ::-webkit-scrollbar-thumb{
     border-radius: 5px;
-    border: 1px solid #B2BEB5; 
-    box-shadow: 0 0 0 1px #B2BEB5 !important;
+    border: 1px solid #003755; 
+    box-shadow: 0 0 0 1px #003755 !important;
     background: #698F3F !important;
 }
 
@@ -129,22 +129,22 @@ nav .navigation-bar .navigation-menu .menu .toggle{
 }  
 
 nav .navigation-bar i.fa-solid.fa-circle-arrow-left{
-    font-size: 30px !important;
-    color: black;
+    font-size: 50px !important;
+    color: #003755;
 }
 
 nav .navigation-bar i.fa-solid.fa-circle-arrow-left:hover{
-    color: #B2BEB5;
+    color: #003755;
     cursor: pointer;
 }
 
 nav .navigation-bar i.fa-solid.fa-circle-arrow-left:focus{
-    color: #B2BEB5;
+    color: #003755;
     cursor: pointer;
 }
 
 nav .navigation-bar i.fa-solid.fa-circle-arrow-left:active{
-    color: #B2BEB5;
+    color: #003755;
     cursor: pointer;
 }
 
@@ -175,15 +175,21 @@ nav .navigation-bar .navigation-sidelinks{
 }
 
 .navigation-sidelinks li:hover a, .navigation-sidelinks li:hover i{
-    color: #B2BEB5 !important;
+    color: #003755 !important;
+    border-bottom: 2px solid #003755 !important;
+    
 }
 
 .navigation-sidelinks li:active a, .navigation-sidelinks li:hover i{
-    color: #B2BEB5 !important;
+    color: #003755 !important;
+    border-bottom: 2px solid #003755 !important;
+    
 }
 
 .navigation-sidelinks li:active a, .navigation-sidelinks li:active i{
-    color: #B2BEB5 !important;
+    color: #003755 !important;
+    border-bottom: 2px solid #003755 !important;
+    
 }
 
 nav .navigation-bar i.fa-solid.fa-bars{
@@ -192,17 +198,17 @@ nav .navigation-bar i.fa-solid.fa-bars{
 }
 
 nav .navigation-bar i.fa-solid.fa-bars:hover{
-    color: #B2BEB5;
+    color: #003755;
     cursor: pointer;
 }
 
 nav .navigation-bar i.fa-solid.fa-bars:focus{
-    color: #B2BEB5;
+    color: #003755;
     cursor: pointer;
 }
 
 nav .navigation-bar i.fa-solid.fa-bars:active{
-    color: #B2BEB5;
+    color: #003755;
     cursor: pointer;
 }
 
@@ -226,4 +232,5 @@ nav .navigation-bar .opened-side{
     display: grid;
     grid-template-columns: 100%;
     place-items: center;
+   
 }

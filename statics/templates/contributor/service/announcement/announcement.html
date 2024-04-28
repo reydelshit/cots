@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="w-dvw flex flex-col items-center justify-center p-4 h-screen my-[2rem]">
+<div class="w-dvw flex flex-col items-center justify-center py-4 h-screen my-[2rem] px-[3rem]">
 
     <div class="fixed inset-0 z-[-10] h-screen w-full">
         <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
@@ -70,73 +70,14 @@
     <!-- <div class = "line" id = "results"></div> -->
 
     {% for announcement in results %}
-    <div id="announcement-records">
-        <div>
-            <a href="{% url 'Contributor Service Announcement Read' announcement.id %}">
-                <div class="field">
-                    <div class="column">
-                        <div class="announcement-gallery">
-                            <img class="gallery-photo" src="{{announcement.announcement_photo.url}}">
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <label for="user">User</label>
-
-                        <div class="user">
-                            <input type="text" value="{{announcement.user | default:'None available'}}" id="user"
-                                name="user" readonly>
-
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-
-                        <label for="release-date">Release Date</label>
-
-                        <div class="release-date">
-                            <input type="text"
-                                value="{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}"
-                                id="release-date" name="release_date" readonly>
-
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-
-                        <label for="place">Place</label>
-
-                        <div class="place">
-                            <input type="text" value="{{announcement.place | default:'None available'}}" id="place"
-                                name="place" readonly>
-
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    {% endfor %}
-
-    {% else %}
-    <!-- <div class = "line" id = "records"></div> -->
-
-    {% for announcement in records %}
-    <div class="w-full mb-[2rem] border-2 rounded-lg p-4 bg-white" id="announcement-records">
+    <div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
         <div class="w-full flex justify-between my-4 ">
 
-            <div class="place">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" value="{{announcement.user | default:'None available'}}" id="place" name="place"
-                    readonly>
+   
+            <p class="text-[#003755] gap-2 flex items-center">     <i class="fa-solid fa-user"></i>{{announcement.user | default:'None available'}}</p>
+            <p class="text-[#003755] gap-2 flex items-center">    <i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
 
-            </div>
-
-            <div>
-                <i class="fa-solid fa-calendar-check"></i>
-
-                <input type="text"
-                    value="{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}"
-                    id="release-date" name="release_date" readonly>
-
-            </div>
+           
         </div>
         <div class="flex items-center justify-center">
             <a class="w-full" href="{% url 'Contributor Service Announcement Read' announcement.id %}">
@@ -153,9 +94,50 @@
                     
                         </div>
 
-                    <div class="flex justify-center w-full mt-[3rem]">
+                    <div class="flex justify-center w-full my-[2rem]">
                         <button
-                            class="w-[10rem] bg-blue-900 hover:bg-white hover:border-blue-900 border-2 p-2 rounded-full font-bold text-white hover:text-blue-600">Read More</button>
+                            class="w-[10rem] bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 rounded-full font-bold text-white hover:text-[#003755]">Read More</button>
+
+                    </div>
+
+
+                </div>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <!-- <div class = "line" id = "records"></div> -->
+
+    {% for announcement in records %}
+    <div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
+        <div class="w-full flex justify-between my-4 ">
+
+   
+            <p class="text-[#003755] gap-2 flex items-center">     <i class="fa-solid fa-user"></i>{{announcement.user | default:'None available'}}</p>
+            <p class="text-[#003755] gap-2 flex items-center">    <i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+
+           
+        </div>
+        <div class="flex items-center justify-center">
+            <a class="w-full" href="{% url 'Contributor Service Announcement Read' announcement.id %}">
+                <div class="w-full flex justify-center flex-col items-center">
+
+                    <div class="w-full h-full flex justify-start flex-col items-start relative">
+                        <img class="h-[18rem] w-full object-cover" src="{{announcement.announcement_photo.url}}">
+
+                            <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
+                                <h1 class="font-bold text-2xl">{{announcement.title | default:'None available'}}</h1>
+                            
+                            </div>
+
+                    
+                        </div>
+
+                    <div class="flex justify-center w-full my-[2rem]">
+                        <button
+                            class="w-[10rem] bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 rounded-full font-bold text-white hover:text-[#003755]">Read More</button>
 
                     </div>
 

@@ -2,7 +2,37 @@
 {% load static %}
 
 {% block content %}
-    <div class = "post" id = "post-filter">
+
+<div class="fixed inset-0 z-[-10] h-screen w-full">
+    <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+</div>
+
+
+<div class="my-[2rem] flex w-dvw px-[1.8rem] items-center justify-center relative text-center">
+    <h1 class="font-bold text-[3rem] text-white text-center">COTSEYE</h1>
+
+    <div class="p-2 absolute right-5">
+        <button onclick="showDropdownOptions()"
+            class="flex flex-row justify-between px-2 py-2 text-white rounded-md shadow focus:outline-none focus:border-[#003755]">
+            <span class=" text-white text-2xl"><i class="fa-solid fa-sliders"></i></span>
+        </button>
+        <div id="options" class="hidden absolute left-[-9rem] w-48 py-2 mt-[1rem] bg-white rounded-lg shadow-xl">
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Valid Posts</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Pending Posts</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showDropdownOptions() {
+        document.getElementById("options").classList.toggle("hidden");
+        // document.getElementById("arrow-up").classList.toggle("hidden");
+        // document.getElementById("arrow-down").classList.toggle("hidden");
+    }
+</script>
+
+
+<!-- <div class = "post" id = "post-filter">
         <form action = "" class = "post-form" method = "GET">
             {% csrf_token %}
 
@@ -39,7 +69,7 @@
                             {% endfor %}
                         </select>
                         
-                        <!-- <label for = "post-status">Post Status</label> 
+                        <label for = "post-status">Post Status</label> 
 
                         <select name = "post_status" id = "post-status">
                             <option disabled selected value>Choose post status</option>
@@ -49,7 +79,7 @@
                             {% for option in options %}
                                 <option value = "{{option.id}}">{{option}}</option>
                             {% endfor %}
-                        </select> -->
+                        </select>
                     </div>
                 </div>
 
@@ -58,31 +88,99 @@
                 </div>    
             </div>
         </form>
+    </div> -->
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == "info" %}
+<script>Swal.fire({ title: "Hey!", text: "{{message}}", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: { confirmButton: "info-button", title: "title" } })</script>
+
+{% elif message.tags == "success" %}
+<script>Swal.fire({ title: "Yay!", text: "{{message}}", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: { confirmButton: "success-button", title: "title" } })</script>
+
+{% else %}
+<script>Swal.fire({ title: "Oops!", text: "{{message}}", background: "#FFFFFF", icon: "error", iconColor: "#C90016", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#C90016", customClass: { confirmButton: "error-button", title: "title" } })</script>
+
+{% endif %}
+{% endfor %}
+{% endif %}
+
+<script>
+    document.querySelector(".filter-posts").onclick = function () {
+        document.querySelector(".post-form").submit();
+    }
+</script>
+
+
+<div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
+    <div class="w-full flex justify-between my-4 ">
+
+
+        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-user"></i>USERNAME</p>
+        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-calendar-check"></i>April 111</p>
+
+
     </div>
+    <div class="flex items-center justify-center">
 
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.tags == "info" %}<script>Swal.fire({title: "Hey!", text: "{{message}}", background: "#FFFFFF", icon: "warning", iconColor: "#154360", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#154360", customClass: {confirmButton: "info-button", title: "title"}})</script>
-            
-            {% elif message.tags == "success" %}<script>Swal.fire({title: "Yay!", text: "{{message}}", background: "#FFFFFF", icon: "success", iconColor: "#698F3F", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#698F3F", customClass: {confirmButton: "success-button", title: "title"}})</script>
-            
-            {% else %}<script>Swal.fire({title: "Oops!", text: "{{message}}", background: "#FFFFFF", icon: "error", iconColor: "#C90016", allowOutsideClick: false, allowEscapeKey: false, confirmButtonColor: "#C90016", customClass: {confirmButton: "error-button", title: "title"}})</script>
-            
-            {% endif %}    
-        {% endfor %}
-    {% endif %}
+        <div class="w-full flex justify-center flex-col items-center">
 
-    <script>
-        document.querySelector(".filter-posts").onclick = function() {
-            document.querySelector(".post-form").submit();
-        }
-    </script>
+            <div class="w-full h-full flex justify-start flex-col items-start relative">
+                <img class="h-[18rem] w-full object-cover" src="/statics/assets/bg-2.jpg">
 
-    {% if results %}
-        <div class = "line" id = "results"></div>
+                <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
+                    <h1 class="font-bold text-2xl">TITLE HERE</h1>
 
-        {% for post in results %}
-            <div class = "post" id = "post-results">
+                </div>
+
+            </div>
+
+            <div class="flex justify-center w-full my-[2rem]">
+                <button
+                    class="w-[10rem] bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 rounded-full font-bold text-white hover:text-[#003755]">Read
+                    More</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
+    <div class="w-full flex justify-between my-4 ">
+
+
+        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-user"></i>USERNAME</p>
+        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-calendar-check"></i>April 111</p>
+
+
+    </div>
+    <div class="flex items-center justify-center">
+
+        <div class="w-full flex justify-center flex-col items-center">
+
+            <div class="w-full h-full flex justify-start flex-col items-start relative">
+                <img class="h-[18rem] w-full object-cover" src="/statics/assets/bg-2.jpg">
+
+                <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
+                    <h1 class="font-bold text-2xl">TITLE HERE</h1>
+
+                </div>
+
+            </div>
+
+            <div class="flex justify-center w-full my-[2rem]">
+                <button
+                    class="w-[10rem] bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 rounded-full font-bold text-white hover:text-[#003755]">Read
+                    More</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if results %}
+<!-- <div class = "line" id = "results"></div> -->
+
+{% for post in results %}
+<!-- <div class = "post" id = "post-results">
                 <div class = "list">
                     <a href = "{% url 'Contributor Service Post Feed Read' post.id %}">
                         <div class = "field">
@@ -122,14 +220,14 @@
                         </div>
                     </a>
                 </div>
-            </div>
-        {% endfor %}
+            </div> -->
+{% endfor %}
 
-    {% else %}
-        <div class = "line" id = "records"></div>
+{% else %}
+<!-- <div class = "line" id = "records"></div> -->
 
-        {% for post in records %}
-            <div class = "post" id = "post-records">
+{% for post in records %}
+<!-- <div class = "post" id = "post-records">
                 <div class = "list">
                     <a href = "{% url 'Contributor Service Post Feed Read' post.id %}">
                         <div class = "field">
@@ -169,7 +267,8 @@
                         </div>
                     </a>
                 </div>
-            </div>
-        {% endfor %}
-    {% endif %}
+            </div> -->
+
+{% endfor %}
+{% endif %}
 {% endblock content %}

@@ -7,57 +7,59 @@
 <div class="h-[85vh] flex items-center justify-center">
 
     {% if draft_post %}
+    <div>
         <div>
-            <div >
-                <header>Report</header>
-            </div>
+            <header>Report</header>
+        </div>
 
-            <div class = "card-body">
-                <div class = "methods">
-                    <button class = "capture">
-                        <a href = "{% url 'Contributor Service Report Capture Update' draft_post.id %}">
-                            <i class = "fa-solid fa-image"></i> 
-                        
-                            <span>Capture with camera</span>
-                        </a>
-                    </button>
+        <div class="card-body">
+            <div class="methods">
+                <button class="capture">
+                    <a href="{% url 'Contributor Service Report Capture Update' draft_post.id %}">
+                        <i class="fa-solid fa-image"></i>
 
-                    <div class = "line"></div>
+                        <span>Capture with camera</span>
+                    </a>
+                </button>
 
-                    <button class = "choose">
-                        <a href = "{% url 'Contributor Service Report Choose Update' draft_post.id %}">
-                            <i class = "fa-solid fa-camera-retro"></i> 
-                        
-                            <span>Choose a file</span>
-                        </a>
-                    </button>
-                </div>
+                <div class="line"></div>
+
+                <button class="choose">
+                    <a href="{% url 'Contributor Service Report Choose Update' draft_post.id %}">
+                        <i class="fa-solid fa-camera-retro"></i>
+
+                        <span>Choose a file</span>
+                    </a>
+                </button>
             </div>
         </div>
+    </div>
 
     {% else %}
-        <div class="flex w-dvw items-center flex-col justify-center mt-[-4rem] p-2">
-            <h1 class="my-[2rem] text-center font-bold text-[3rem] ">REPORT</h1>
+    <div class="flex w-dvw items-center flex-col justify-center mt-[-8rem] p-2">
+        <h1 class="my-[2rem] text-center font-bold text-[3rem] ">REPORT</h1>
 
 
-<div class="flex flex-col w-full justify-center items-center">
-    
-    <button class = "w-[15rem] bg-blue-600 mb-4 hover:bg-white border-2  hover:border-blue-600 hover:text-blue-600 text-white p-4 rounded-lg font-semibold">
-        <a href = "{% url 'Contributor Service Report Capture' %}">
-            <i class = "fa-solid fa-camera-retro"></i> 
-        
-            <span>Capture with camera</span>
-        </a>
-    </button>
-    <button class = "w-[15rem] bg-blue-600 hover:bg-white border-2 hover:border-blue-600 hover:text-blue-600 text-white p-4 rounded-lg font-semibold">
-        <a href = "{% url 'Contributor Service Report Choose' %}">
-            <i class = "fa-solid fa-image"></i> 
-        
-            <span>Choose an image</span>
-        </a>
-    </button>
-</div>
+        <div class="flex flex-col w-full justify-center items-center">
+
+            <button
+                class="w-[15rem] bg-[#003755] mb-4 hover:bg-white border-2  hover:border-[#003755] hover:text-[#003755] text-white p-4 rounded-lg font-semibold">
+                <a href="{% url 'Contributor Service Report Capture' %}">
+                    <i class="fa-solid fa-camera-retro"></i>
+
+                    <span>Capture with camera</span>
+                </a>
+            </button>
+            <button
+                class="w-[15rem] bg-[#003755] hover:bg-white border-2 hover:border-[#003755] hover:text-[#003755] text-white p-4 rounded-lg font-semibold">
+                <a href="{% url 'Contributor Service Report Choose' %}">
+                    <i class="fa-solid fa-image"></i>
+
+                    <span>Choose an image</span>
+                </a>
+            </button>
         </div>
+    </div>
     {% endif %}
 
 </div>

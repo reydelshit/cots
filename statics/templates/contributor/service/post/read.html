@@ -36,44 +36,44 @@
 
             <p class="indent-10">{{valid_post.description | default:'None available'}}</p>
 
-            <div class="mt-[2rem] ">
+            <div class="mt-[2rem] flex flex-col">
                 <h1 class="font-bold">Post observation</h1>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Size</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Size</p>
 
-                    <td>{{valid_post.post_observation.size | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.size | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Depth</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Depth</p>
 
-                    <td>{{valid_post.post_observation.depth | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.depth | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Density</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Density</p>
 
-                    <td>{{valid_post.post_observation.density | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.density | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Weather</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Weather</p>
 
-                    <td>{{valid_post.post_observation.weather | default:'None available'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.weather | default:'None available'}}</p>
+                </div>
             </div>
 
 
             <div class="flex gap-4 mt-[5rem] justify-between">
 
                 <div
-                class=" border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                class=" border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                 <a href="{% url 'Contributor Service Report Update' valid_post.id %}">Update</a>
             </div>
 
                 <div
-                    class="border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    class="border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                     <a href="{% url 'Contributor Service Post Valid Send' valid_post.id %}">Send</a>
                 </div>
 
@@ -90,11 +90,11 @@
     <div class="w-full p-4 bg-white rounded-2xl my-[2rem]">
         <div class="flex w-full justify-between items-center">
             <div>
-                <p><i class="fa-solid fa-flag mr-2"></i>Invalid</p>
-                <p><i class="fa-solid fa-user mr-2"></i>{{invalid_post.user}}</p>
+                <p class="text-[#003755]"><i class="fa-solid fa-flag mr-2"></i>Invalid</p>
+                <p class="text-[#003755]"><i class="fa-solid fa-user mr-2"></i>{{invalid_post.user}}</p>
             </div>
 
-            <p><i class="fa-solid fa-calendar-check mr-2"></i>{{invalid_post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+            <p class="text-[#003755]"><i class="fa-solid fa-calendar-check mr-2"></i>{{invalid_post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
 
         </div>
         <div>
@@ -111,44 +111,44 @@
 
             <p class="indent-10">{{invalid_post.description | default:'None available'}}</p>
 
-            <div class="mt-[2rem] ">
+            <div class="mt-[2rem] flex flex-col">
                 <h1 class="font-bold">Post observation</h1>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Size</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Size</p>
 
-                    <td>{{invalid_post.post_observation.size | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.size | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Depth</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Depth</p>
 
-                    <td>{{invalid_post.post_observation.depth | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.depth | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Density</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Density</p>
 
-                    <td>{{invalid_post.post_observation.density | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.density | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Weather</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Weather</p>
 
-                    <td>{{invalid_post.post_observation.weather | default:'None available'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.weather | default:'None available'}}</p>
+                </div>
             </div>
 
 
             <div class="flex gap-4 mt-[5rem] justify-between">
 
                 <div
-                class=" border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                class=" border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                 <a href="{% url 'Contributor Service Report Update' invalid_post.id %}">Update</a>
             </div>
 
                 <div
-                    class="border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    class="border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                     <a href="{% url 'Contributor Service Post Invalid Send' invalid_post.id %}">Send</a>
                 </div>
 
@@ -186,44 +186,44 @@
 
             <p class="indent-10">{{pending_post.description | default:'None available'}}</p>
 
-            <div class="mt-[2rem] ">
+            <div class="mt-[2rem] flex flex-col">
                 <h1 class="font-bold">Post observation</h1>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Size</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Size</p>
 
-                    <td>{{pending_post.post_observation.size | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.size | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Depth</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Depth</p>
 
-                    <td>{{pending_post.post_observation.depth | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.depth | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Density</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Density</p>
 
-                    <td>{{pending_post.post_observation.density | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.density | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Weather</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Weather</p>
 
-                    <td>{{pending_post.post_observation.weather | default:'None available'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.weather | default:'None available'}}</p>
+                </div>
             </div>
 
 
             <div class="flex gap-4 mt-[5rem] justify-between">
 
                 <div
-                class=" border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                class=" border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                 <a href="{% url 'Contributor Service Report Update' pending_post.id %}">Update</a>
             </div>
 
                 <div
-                    class="border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    class="border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                     <a href="{% url 'Contributor Service Post Pending Send' pending_post.id %}">Send</a>
                 </div>
 
@@ -240,11 +240,11 @@
     <div class="w-full p-4 bg-white rounded-2xl my-[2rem]">
         <div class="flex w-full justify-between items-center">
             <div>
-                <p><i class="fa-solid fa-flag mr-2"></i>Draft</p>
-                <p><i class="fa-solid fa-user mr-2"></i>{{draft_post.user}}</p>
+                <p class="text-[#003755]"><i class="fa-solid fa-flag mr-2"></i>Draft</p>
+                <p class="text-[#003755]"><i class="fa-solid fa-user mr-2"></i>{{draft_post.user}}</p>
             </div>
 
-            <p><i class="fa-solid fa-calendar-check mr-2"></i>{{draft_post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+            <p class="text-[#003755]"><i class="fa-solid fa-calendar-check mr-2"></i>{{draft_post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
 
         </div>
         <div>
@@ -256,49 +256,48 @@
 
 
 
-            <p class="font-bold my-2"><i class="fa-solid fa-location-dot mr-2"></i>{{draft_post.coordinates.latitude | default:'0'}}° N, {{draft_post.coordinates.longitude | default:'0'}}° E</p>
+            <p class="font-bold my-2 text-[#003755]"><i class="fa-solid fa-location-dot mr-2"></i>{{draft_post.coordinates.latitude | default:'0'}}° N, {{draft_post.coordinates.longitude | default:'0'}}° E</p>
 
 
             <p class="indent-10">{{draft_post.description | default:'None available'}}</p>
 
-            <div class="mt-[2rem] ">
-                <h1 class="font-bold">Post observation</h1>
+            <div class="mt-[2rem] flex flex-col">
+                <h1 class="font-bold text-[#003755]">Post observation</h1>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Size</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Size</p>
 
-                    <td>{{draft_post.post_observation.size | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.size | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Depth</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Depth</p>
 
-                    <td>{{draft_post.post_observation.depth | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.depth | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Density</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Density</p>
 
-                    <td>{{draft_post.post_observation.density | default:'0'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.density | default:'0'}}</p>
+                </div>
 
-                <tr class=" p-2 flex gap-4">
-                    <td class="font-bold">Weather</td>
+                <div class=" p-2 flex gap-4">
+                    <p class="font-bold">Weather</p>
 
-                    <td>{{draft_post.post_observation.weather | default:'None available'}}</td>
-                </tr>
+                    <p>{{pending_post.post_observation.weather | default:'None available'}}</p>
+                </div>
             </div>
-
 
             <div class="flex gap-4 mt-[5rem] justify-between">
 
                 <div
-                class=" border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                class=" border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                 <a href="{% url 'Contributor Service Report Update' draft_post.id %}">Update</a>
             </div>
 
                 <div
-                    class="border-2 w-[10rem] h-[3rem] bg-blue-950 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                    class="border-2 w-[10rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 rounded-lg">
                     <a href="{% url 'Contributor Service Post Draft Send' draft_post.id %}">Send</a>
                 </div>
 

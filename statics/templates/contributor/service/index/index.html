@@ -88,9 +88,9 @@
                 </a>
 
                 <div class = "navigation-menu bg-orange">
-                    <div class = "menu bg-orange-400 ">
-                        <div class = "toggle">                        
-                            <i class = "fa-solid fa-circle-arrow-left"></i>
+                    <div class = "menu ">
+                        <div class = "toggle text-[#003755]">                        
+                            <i class = "fa-solid fa-circle-arrow-left text-[#003755]"></i>
                         </div>
 
                         <ul class = "navigation-sidelinks">
@@ -110,20 +110,26 @@
                         </ul>
                     </div>
 
-                   <a class="bg-black p-4 !text-white !rounded-md" href = "{% url 'Contributor Service Profile' %}">Profile</a>
+                   <a class="bg-black hover:bg-[#003755] p-4 !text-white !rounded-md" href = "{% url 'Contributor Service Profile' %}">Profile</a>
 
-                    <i class = "fa-solid fa-bars opened-side"></i>
+                    <i class = "fa-solid fa-bars opened-side text-[#003755]"></i>
                 </div>
             </div>
         </nav>
     
 
-        <div class = "content">
+        <div class = "content relative">
             {% block content %}
     
     
             {% endblock content %}
+
+            <img src="/statics/assets/floats.png" class="h-[5rem] w-[5rem] object-cover fixed bottom-10 right-5 z-50" alt="">
+
         </div>
+
+     
+        
     </body>
 
     <script type = "text/javascript">if(window.location.hash && window.location.hash === "#_=_"){ window.location.hash = ""; history.pushState("", document.title, window.location.pathname);}</script>

@@ -16,9 +16,9 @@
 
         <div class="flex justify-between w-full items-center">
 
-            <p><i class="fa-solid fa-feather"></i>{{announcement.user | default:'None available'}}</p>
+            <p class="text-[#003755] flex gap-2 items-center"><i class="fa-solid fa-feather"></i>{{announcement.user | default:'None available'}}</p>
 
-            <p><i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
+            <p class="text-[#003755] flex gap-2 items-center"><i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
         </div>
 
 
@@ -36,7 +36,7 @@
 
         <div class="w-full justify-end flex my-[2rem]">
             <div
-                class="rounded-full w-[8rem] text-center buttons cursor-pointer bg-blue-900 hover:bg-white hover:border-blue-900 border-2 p-2 font-bold text-white hover:text-blue-900">
+                class="rounded-full w-[8rem] text-center buttons cursor-pointer bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 font-bold text-white hover:text-[#003755]">
                 <a class="share-announcement" target="blank">Share</a>
             </div>
         </div>

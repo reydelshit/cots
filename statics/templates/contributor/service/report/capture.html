@@ -13,9 +13,9 @@
 
     .tablink {
         width: 100%;
-        background-color: #2563eb;
+        background-color: #003755;
         float: left;
-        border: 1px solid #ccc;
+        border: 1px solid #003755;
         outline: none;
         cursor: pointer;
         padding: 10px 15px;
@@ -26,11 +26,12 @@
     }
 
     .tablink:hover {
-        background-color: #ddd;
+        background-color: white;
+        color: #003755
     }
 
     .tablink.active {
-        background-color: #779df1;
+        background-color: #025c8d;
     }
 
     .tabcontent {
@@ -50,9 +51,9 @@
     {% csrf_token %}
 
     <div class="tabs">
-        <button class="tablink active" onclick="openTab('tab1')">Details</button>
-        <button class="tablink" onclick="openTab('tab2')">Image</button>
-        <button class="tablink" onclick="openTab('tab3')">Location</button>
+        <button class="tablink active flex gap-2 items-center text-lg" onclick="openTab('tab1')"><i class="fa-solid fa-circle-info"></i> Details </button>
+        <button class="tablink flex gap-2 items-center text-lg" onclick="openTab('tab2')"> <i class="fa-solid fa-image"></i> Image</button>
+        <button class="tablink flex gap-2 items-center text-lg" onclick="openTab('tab3')"><i class="fa-solid fa-location-dot"></i> Location</button>
     </div>
 
     <div id="tab1" class="tabcontent w-full">
@@ -131,7 +132,7 @@
                
             </div> -->
 <div class="w-full flex justify-end my-[2rem]">
-    <button class="border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab1')">Next</button>
+    <button type="button" class="border-2 max-w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab1')">Next</button>
 
 </div>
 
@@ -140,7 +141,7 @@
     <div id="tab2" class="tabcontent w-full" style="display:none;">
 
         <div class="w-full border-2 p-2 my-2 rounded-md flex-col flex items-center">
-            <label for="post-photo" class="capture-photo hover:border-2 w-full my-2 h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">Capture</label>
+            <label for="post-photo" class="capture-photo hover:border-2 w-full my-2 h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">Capture</label>
 
             <input type="file" class="post-photo w-full border-2 p-2 rounded-md" name="post_photos" accept="image/*" capture="environment" required>
         </div>
@@ -161,62 +162,52 @@
 
 
         <div class="w-full flex justify-end my-[2rem]">
-            <button class="border-2 max-w-[15rem] h-[3rem] bg-blue-500 text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab2')">Next</button>
+            <button type="button" class="border-2 max-w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab2')">Next</button>
         
         </div>
     </div>
 
     <div id="tab3" class="tabcontent" style="display:none;">
-        <div class="card-body">
+        <div class="latitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
+            <input type="text" value="" id="latitude" name="latitude">
 
+            <i class="fa-solid fa-map-location-dot"></i>
+        </div>
 
-            <div class="field">
-                <div class="column">
-                    <label for="latitude">Latitude</label>
+        <div class="longitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
+            <input type="text" value="" id="longitude" name="longitude">
 
-                    <div class="latitude">
-                        <input type="text" value="" id="latitude" name="latitude">
+            <i class="fa-solid fa-map-location-dot"></i>
+        </div>
 
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                </div>
+        <select class="h-[2.5rem] border-2 p-2 rounded-md my-2 w-full" name="location" id="location">
+            <option disabled selected value="">Choose location</option>
 
-                <div class="column">
-                    <label for="longitude">Longitude</label>
+            {% for location in locations %}
 
-                    <div class="longitude">
-                        <input type="text" value="" id="longitude" name="longitude">
+            <option value="{{location.id}}">{{location}}</option>
 
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                </div>
+            {% endfor %}
+        </select>
+
+        <div class="map w-full">
+            <div class="report-map w-full">
             </div>
+        </div>
 
-            <div class = "column">
-                <label for = "location">Location</label> 
 
-                <select name = "location" id = "location">
-                    <option disabled selected value = "">Choose location</option>
-
-                    {% for location in locations %}
-
-                    <option value="{{location.id}}">{{location}}</option>
-                    
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="map">
-                <div class="report-map">
-                </div>
-            </div>
-
-            <div class="button">
+        <div class="flex w-full justify-end my-2">
+            <div
+                class="border-2 w-fit h-[3rem] bg-green-500 text-white font-bold hover:bg-white hover:border-green-600 hover:text-green-600 text-center cursor-pointer p-2 rounded-lg">
                 <a class="refresh-map" onclick="refreshMap()">Refresh</a>
             </div>
         </div>
-        <div class="button">
-            <a class="save-report" type="submit">Save</a>
+
+        <div class="flex w-full justify-center">
+            <div
+                class="border-2 w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
+                <a class="save-report" type="submit">Save</a>
+            </div>
         </div>
     </div>
     <!--         

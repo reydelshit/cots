@@ -4,6 +4,9 @@
 {% block content %}
 <div class="w-dvw flex flex-col items-center justify-center p-4">
 
+    <div class="fixed inset-0 z-[-10] h-screen w-full">
+        <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+    </div>
 
 
     <!-- <form action = "" class = "intervention-form" method = "GET">
@@ -63,7 +66,7 @@
             </div>
         </div>
     </form> -->
-    <h1 class="my-[2rem] text-center font-bold text-[3rem] ">INTERVENTION</h1>
+    <h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">INTERVENTION</h1>
 
 
     {% if messages %}
@@ -91,7 +94,7 @@
     <!-- <div class = "line" id = "results"></div> -->
 
     {% for intervention in results %}
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow mb-[1.2rem]">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow mb-[1.2rem] p-[2rem]">
         <a class="w-full flex flex-col items-center justify-center p-2" href="{% url 'Contributor Service Intervention Read' intervention.id %}">
 
             <div class="h-[10rem] w-full ">
@@ -106,7 +109,7 @@
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">{{intervention.title | default:'None available'}}</p>
               <div class="flex justify-end w-full">
                 <a href="{% url 'Contributor Service Intervention Read' intervention.id %}"
-                class="inline-flex font-bold items-center px-3 py-2 text-sm text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="inline-flex font-bold items-center px-3 py-2 text-sm text-center text-white bg-[#003755] rounded-lg hover:bg-[#003755] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-[#003755] dark:focus:ring-[#003755]">
                 Read more
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 14 10">
@@ -149,10 +152,10 @@
     <!-- <div class = "line" id = "records"></div> -->
 
     {% for intervention in records %}
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow mb-[1.2rem]">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow mb-[1.2rem] p-[1.5rem]">
         <a class="w-full flex flex-col items-center justify-center p-2" href="{% url 'Contributor Service Intervention Read' intervention.id %}">
 
-            <div class="h-[10rem] w-full ">
+            <div class="h-[15rem] w-full ">
                 <img class="rounded-t-lg block h-full w-full object-cover" src={{intervention.intervention_photo.url}}
             alt="" />
             </div>
@@ -164,7 +167,7 @@
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">{{intervention.title | default:'None available'}}</p>
               <div class="flex justify-end w-full">
                 <a href="{% url 'Contributor Service Intervention Read' intervention.id %}"
-                class="inline-flex font-bold items-center px-3 py-2 text-sm text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="inline-flex font-bold items-center px-3 py-2 text-sm text-center text-white bg-[#003755] rounded-lg hover:bg-[#003755] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-[#003755] dark:focus:ring-[#003755]">
                 Read more
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 14 10">

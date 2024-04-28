@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <div class = "resource" id = "link">
+    <!-- <div class = "resource" id = "link">
         <div class = "card-header">
             <header>Resource links</header>
         </div>
@@ -34,9 +34,9 @@
                 <a class = "browse-links" href = "{% url 'Contributor Service Resource Link' %}">Browse</a>
             </div>    
         </div>
-    </div>
+    </div> -->
 
-    <div class = "resource" id = "file">
+    <!-- <div class = "resource" id = "file">
         <div class = "card-header">
             <header>Resource files</header>
         </div>
@@ -68,6 +68,45 @@
                 <a class = "browse-files" href = "{% url 'Contributor Service Resource File' %}">Browse</a>
             </div>    
         </div>
+    </div> -->
+    <div class="fixed inset-0 z-[-10] h-screen w-full">
+        <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+    </div>
+
+    <h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">RESOURCES</h1>
+    <div class="h-fit my-[4rem] block w-full bg-white rounded-xl p-4 px-[2rem] pt-[2rem]">
+        <div class="flex gap-4 flex-col">
+            <div class="w-full flex justify-between items-center border-b-2 text-[#003755] border-[#003755] cursor-pointer">
+                <h3 class="font-semibold text-md uppercase tracking-wide w-full  mb-2">RESOURCES 1</h3>
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+            <div class="w-full flex justify-between items-center border-b-2 text-[#003755] border-[#003755] cursor-pointer">
+                <h3 class="font-semibold text-md uppercase tracking-wide w-full  mb-2">RESOURCES 1</h3>
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+            <div class="w-full flex justify-between items-center border-b-2 text-[#003755] border-[#003755] cursor-pointer">
+                <h3 class="font-semibold text-md uppercase tracking-wide w-full  mb-2">RESOURCES 1</h3>
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+            <div class="w-full flex justify-between items-center border-b-2 text-[#003755] border-[#003755] cursor-pointer">
+                <h3 class="font-semibold text-md uppercase tracking-wide w-full  mb-2">RESOURCES 1</h3>
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+            <div class="w-full flex justify-between items-center border-b-2 text-[#003755] border-[#003755] cursor-pointer">
+                <h3 class="font-semibold text-md uppercase tracking-wide w-full  mb-2">RESOURCES 1</h3>
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+          
+
+           
+        </div>
+        
+        
     </div>
 
     {% if messages %}
