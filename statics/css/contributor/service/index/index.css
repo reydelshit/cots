@@ -94,7 +94,7 @@ nav .navigation-bar .navigation-menu{
 nav .navigation-bar .navigation-menu a{
     margin-left: 30px;
     margin-right: 30px;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700;
     font-size: 20px !important;
     color: black;
@@ -165,7 +165,7 @@ nav .navigation-bar .navigation-sidelinks{
 .navigation-sidelinks li a{
     margin-top: 30px !important;
     position: relative;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700;
     font-size: 20px !important;
     color: black;

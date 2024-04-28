@@ -57,7 +57,7 @@
 }
 
 .profile .card-body p{
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700;
     font-size: 48px;
     color: #154360 !important;
@@ -68,7 +68,7 @@
 
 @media screen and (min-width: 369px) and (max-width: 445px){
     .profile .card-body p{
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700;
         font-size: 36px !important;
         color: #154360;
@@ -80,7 +80,7 @@
 
 @media screen and (min-width: 349px) and (max-width: 368px){
     .profile .card-body p{
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700;
         font-size: 28px !important;
         color: #154360;
@@ -92,7 +92,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 348px){
     .profile .card-body p{
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700;
         font-size: 26px !important;
         color: #154360;
@@ -204,7 +204,7 @@
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -225,7 +225,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -243,7 +243,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -261,7 +261,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -374,7 +374,7 @@
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -395,7 +395,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -413,7 +413,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -431,7 +431,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -544,7 +544,7 @@
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -565,7 +565,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -583,7 +583,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -601,7 +601,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -714,7 +714,7 @@
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -735,7 +735,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -753,7 +753,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -771,7 +771,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -884,7 +884,7 @@
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -905,7 +905,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -923,7 +923,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -941,7 +941,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -1054,7 +1054,7 @@
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -1075,7 +1075,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -1093,7 +1093,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -1111,7 +1111,7 @@
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -1225,7 +1225,7 @@
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     -moz-appearance: textfield;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -1247,7 +1247,7 @@
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         -moz-appearance: textfield;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -1266,7 +1266,7 @@
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         -moz-appearance: textfield;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -1285,7 +1285,7 @@
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         -moz-appearance: textfield;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -1403,7 +1403,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -1424,7 +1424,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -1442,7 +1442,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -1460,7 +1460,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;
@@ -1573,7 +1573,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
     border-radius: 5px; 
     box-shadow: 0 0 0 1px #B2BEB5 !important;
     outline: none !important;
-    font-family: "Philosopher";
+    /* font-family: "Philosopher"; */
     font-weight: 700 !important;
     font-size: 20px !important;   
     color: #154360 !important;
@@ -1594,7 +1594,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 18px !important;   
         color: #154360 !important;
@@ -1612,7 +1612,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 16px !important;   
         color: #154360 !important;
@@ -1630,7 +1630,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
         border-radius: 5px; 
         box-shadow: 0 0 0 1px #B2BEB5 !important;
         outline: none !important;
-        font-family: "Philosopher";
+        /* font-family: "Philosopher"; */
         font-weight: 700 !important;
         font-size: 14px !important;   
         color: #154360 !important;

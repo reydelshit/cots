@@ -1,26 +1,16 @@
-
-
-
-/* poppins  */
-
-
-
 @import url("https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Overlock:wght@400;700;900&display=swap");
 
 
 /* All */
 *{
-
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     scrollbar-width: thin !important;
     scrollbar-color: #698F3F #154360 !important;
     transition: all 0.25s ease;
-
 }
-
 
 
 /* Scrollbar */
