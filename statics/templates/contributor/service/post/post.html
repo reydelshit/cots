@@ -12,10 +12,10 @@
     </div>
 
 
-    <div class="my-[2rem] flex w-full px-[1.8rem] items-center justify-center relative text-center">
+    <div class="my-[2rem] flex flex-col w-full px-[1.8rem] items-center justify-center relative text-center">
         <h1 class="font-bold text-[3rem] text-white text-center">MY POSTS</h1>
 
-        <div class="p-2 absolute right-5">
+        <div class="p-2 min-[360px]:absolute right-5">
             <button onclick="showDropdownOptions()"
                 class="flex flex-row justify-between px-2 py-2 text-white rounded-md shadow focus:outline-none focus:border-[#003755]">
                 <span class=" text-white text-2xl"><i class="fa-solid fa-sliders"></i></span>
@@ -120,10 +120,10 @@
     <div class="w-full ">
         <a href="{% url 'Contributor Service Post Read' post.id %}">
             <div class="flex items-center w-full gap-2 h-full p-2 flex-col">
-                <div class="flex w-full justify-between my-2">
+                <div class="flex w-full flex-col min-[320px]:flex-row min-[320px]:justify-between my-2">
                     <h1 class="font-bold flex gap-2 items-center text-[#003755]"><i class="fa-regular fa-user"></i>
                         @{{post.user | default:'None available'}}<h1>
-                            <p class="font-bold flex gap-2 items-center text-[#003755]"> <i
+                    <p class="font-bold flex gap-2 items-center text-[#003755]"> <i
                                     class="fa-solid fa-calendar-days"></i> {{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
                 </div>
 
@@ -186,10 +186,10 @@
     <div class="w-full ">
         <a href="{% url 'Contributor Service Post Read' post.id %}">
             <div class="flex items-center w-full gap-2 h-full p-2 flex-col">
-                <div class="flex w-full justify-between my-2">
+                <div class="flex w-full flex-col min-[320px]:flex-row min-[320px]:justify-between my-2">
                     <h1 class="font-bold flex gap-2 items-center text-[#003755]"><i class="fa-regular fa-user"></i>
                         @{{post.user | default:'None available'}}<h1>
-                            <p class="font-bold flex gap-2 items-center text-[#003755]"> <i
+                    <p class="font-bold flex gap-2 items-center text-[#003755]"> <i
                                     class="fa-solid fa-calendar-days"></i> {{post.capture_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
                 </div>
 

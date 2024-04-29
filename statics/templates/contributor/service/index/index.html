@@ -84,39 +84,59 @@
         <title>COTSEye | Home</title>
     </head>
 
+
+    <style>
+        .sidelinks {
+            display: none;
+        }
+
+        .sidelinks div li a:hover {
+            color: #003755;
+        }
+
+        .show {
+            display: block; /* Hide the navigation menu */
+        }
+
+        .hidden {
+            display: none; /* Show the close button */
+        }
+
+
+    </style>
+
+
+
     <body class="bg-[#0C0C0C]">
         <nav>
-            <div class = "navigation-bar h-[5rem]">
-                <a href = "{% url 'Contributor Service Home' %}">
-                    <img class="h-full w-[4rem]" src = "{% static 'assets/logo.jpg' %}" alt = "navigation-logo">
+            <div class="navigation-bar h-[5rem]">
+                <a href="{% url 'Contributor Service Home' %}">
+                    <img class="h-full w-[4rem]" src="{% static 'assets/logo.jpg' %}" alt="navigation-logo">
                 </a>
-
-                <div class = "navigation-menu bg-orange">
-                    <div class = "menu ">
-                        <div class = "toggle text-[#003755]">                        
-                            <i class = "fa-solid fa-circle-arrow-left text-[#003755]"></i>
+            
+                <div class="navigation-menu">
+                    <div>
+                        <div class="text-[#003755]">
+                            <!-- <i class="fa-solid fa-circle-arrow-left text-[#003755]"></i> -->
                         </div>
-
-                        <ul class = "navigation-sidelinks">
-                            <li><a href = "{% url 'Contributor Service Map' %}">COTS maps</a></li>
-
-                            <li><a href = "{% url 'Contributor Service Post Feed' %}">COTS eye</a></li>
-
-                            <li><a href = "{% url 'Contributor Service Post' %}">My posts</a></li>
-
-                            <li><a href = "{% url 'Contributor Service Inquiry' %}">FAQS</a></li>
-
-                            <li><a href = "{% url 'Contributor Service Resource' %}">Resources</a></li>
-
-                            <li><a href = "{% url 'Contributor Service Announcement' %}">Announcements</a></li>
-
-                            <li><a href = "{% url 'Contributor Service Intervention' %}">Intervention programs</a></li>
+            
+                        <ul class="sidelinks fixed right-0 h-dvh z-20 bg-white min-[330px]:w-[80%] top-0 flex flex-col items-end gap-4">
+                           <div class="flex flex-col mt-[8rem] gap-4 text-end">
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Map' %}">COTS maps</a></li>
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Post Feed' %}">COTS eye</a></li>
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Post' %}">My posts</a></li>
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Inquiry' %}">FAQS</a></li>
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Resource' %}">Resources</a></li>
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Announcement' %}">Announcements</a></li>
+                            <li class="hover:text-[#003755]"><a href="{% url 'Contributor Service Intervention' %}">Intervention programs</a></li>
+                           </div>
                         </ul>
                     </div>
-
-                   <a class="bg-black hover:bg-[#003755] p-4 !text-white !rounded-md" href = "{% url 'Contributor Service Profile' %}">Profile</a>
-
-                    <i class = "fa-solid fa-bars opened-side text-[#003755]"></i>
+            
+                    <a class="bg-black hover:bg-[#003755] p-4 !text-white !rounded-md" href="{% url 'Contributor Service Profile' %}">Profile</a>
+            
+                    <i class="fa-solid fa-bars opened-side text-[#003755] z-50" id="toggleButton"></i>
+                    <i class="fa-solid fa-times closed-side text-[#003755] hidden" id="closeButton"></i>
                 </div>
             </div>
         </nav>
@@ -137,9 +157,27 @@
         
     </body>
 
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const closeButton = document.getElementById('closeButton');
+        const sideLinks = document.querySelector('.sidelinks');
+
+
+        toggleButton.addEventListener('click', function() {
+            sideLinks.classList.toggle('show');
+            toggleButton.classList.add('hidden');
+        });
+
+ 
+
+      </script>
+
     <script type = "text/javascript">if(window.location.hash && window.location.hash === "#_=_"){ window.location.hash = ""; history.pushState("", document.title, window.location.pathname);}</script>
 
-    <script>
+ 
+
+
+    <!-- <script>
         const body = document.querySelector("body");
 
         const nav = document.querySelector("nav");
@@ -157,5 +195,5 @@
                 nav.classList.remove("active");
             }
         });
-    </script>
+    </script> -->
 </html>

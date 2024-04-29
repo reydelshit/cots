@@ -57,7 +57,7 @@
 <form action="" class="report-form bg-white p-2 rounded-lg" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <div class="tabs">
+    <div class="tabs flex flex-col min-[570px]:flex-row">
         <button class="tablink active flex gap-2 items-center text-lg" onclick="openTab('tab1')"><i class="fa-solid fa-circle-info"></i> Details </button>
         <button class="tablink flex gap-2 items-center text-lg" onclick="openTab('tab2')"> <i class="fa-solid fa-image"></i> Image</button>
         <button class="tablink flex gap-2 items-center text-lg" onclick="openTab('tab3')"><i class="fa-solid fa-location-dot"></i> Location</button>

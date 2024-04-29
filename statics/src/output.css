@@ -681,8 +681,16 @@ video {
   left: -9rem;
 }
 
+.right-0{
+  right: 0px;
+}
+
 .right-5{
   right: 1.25rem;
+}
+
+.top-0{
+  top: 0px;
 }
 
 .top-5{
@@ -828,6 +836,10 @@ video {
 
 .mt-\[5rem\]{
   margin-top: 5rem;
+}
+
+.mt-\[8rem\]{
+  margin-top: 8rem;
 }
 
 .box-border{
@@ -997,6 +1009,10 @@ video {
   height: 90%;
 }
 
+.h-dvh{
+  height: 100dvh;
+}
+
 .h-fit{
   height: -moz-fit-content;
   height: fit-content;
@@ -1048,6 +1064,10 @@ video {
 
 .w-\[5rem\]{
   width: 5rem;
+}
+
+.w-\[60\%\]{
+  width: 60%;
 }
 
 .w-\[6rem\]{
@@ -2171,10 +2191,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-transparent{
-  background-color: transparent;
-}
-
 .bg-opacity-70{
   --tw-bg-opacity: 0.7;
 }
@@ -3107,6 +3123,32 @@ body {
 
 .hover\:focus\:text-center:focus:hover{
   text-align: center;
+}
+
+@media (min-width: 320px){
+  .min-\[320px\]\:flex-row{
+    flex-direction: row;
+  }
+
+  .min-\[320px\]\:justify-between{
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 360px){
+  .min-\[360px\]\:absolute{
+    position: absolute;
+  }
+}
+
+@media (min-width: 570px){
+  .min-\[570px\]\:flex-row{
+    flex-direction: row;
+  }
+
+  .min-\[570px\]\:flex-col{
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 640px){
