@@ -47,12 +47,15 @@
     }
 </style>
 
+<div class="fixed inset-0 z-[-10] h-screen w-full">
+    <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+</div>
 
-<form action="" class="report-form" method="POST" enctype="multipart/form-data">
+<h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">POST</h1>
+
+
+<form action="" class="report-form bg-white p-2 rounded-lg" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-
-    <form action="" class="report-form" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
 
         <div class="tabs">
             <button class="tablink active flex gap-2 items-center text-lg" onclick="openTab('tab1')"><i class="fa-solid fa-circle-info"></i> Details </button>
@@ -296,7 +299,7 @@
                         </div>   
                     </div>
                 </div> -->
-    </form>
+ 
 
     <!-- <div class = "report" id = "choose">
 
