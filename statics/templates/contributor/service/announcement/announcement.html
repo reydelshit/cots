@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="w-dvw flex flex-col items-center justify-center py-4 h-screen my-[2rem] px-[3rem]">
+
 
     <div class="fixed inset-0 z-[-10] h-screen w-full">
         <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
@@ -10,7 +10,7 @@
 
 
 
-    <h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">ANNOUNCEMENTS</h1>
+    <h1 class="my-[2rem] text-center font-bold text-2xl min-[490px]:text-[3rem] text-white">ANNOUNCEMENTS</h1>
     <!-- <div id="announcement-filter">
         <form action = "" class = "announcement-form" method = "GET">
             {% csrf_token %}
@@ -70,24 +70,20 @@
     <!-- <div class = "line" id = "results"></div> -->
 
     {% for announcement in results %}
-    <div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
-        <div class="w-full flex justify-between my-4 ">
-
-   
+    <div class="w-full py-[2rem] h-fit min-[490px]:h-[30rem] flex flex-col items-center mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
+        <div class="flex w-full flex-col min-[320px]:flex-row min-[320px]:justify-between my-2">
             <p class="text-[#003755] gap-2 flex items-center">     <i class="fa-solid fa-user"></i>{{announcement.user | default:'None available'}}</p>
-            <p class="text-[#003755] gap-2 flex items-center">    <i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
-
-           
+            <p class="text-[#003755] gap-2 flex items-center">    <i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p> 
         </div>
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center w-full mt-[1rem]">
             <a class="w-full" href="{% url 'Contributor Service Announcement Read' announcement.id %}">
                 <div class="w-full flex justify-center flex-col items-center">
 
                     <div class="w-full h-full flex justify-start flex-col items-start relative">
                         <img class="h-[18rem] w-full object-cover" src="{{announcement.announcement_photo.url}}">
 
-                            <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
-                                <h1 class="font-bold text-2xl">{{announcement.title | default:'None available'}}</h1>
+                            <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-0 min-[490px]:p-4 h-[30%]">
+                                <h1 class="font-bold text-lg min-[490px]:text-2xl">{{announcement.title | default:'None available'}}</h1>
                             
                             </div>
 
@@ -111,24 +107,20 @@
     <!-- <div class = "line" id = "records"></div> -->
 
     {% for announcement in records %}
-    <div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
-        <div class="w-full flex justify-between my-4 ">
-
-   
+    <div class="w-full py-[1rem] h-fit min-[490px]:h-[30rem] flex flex-col items-center mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
+        <div class="flex w-full flex-col min-[320px]:flex-row min-[320px]:justify-between my-2">
             <p class="text-[#003755] gap-2 flex items-center">     <i class="fa-solid fa-user"></i>{{announcement.user | default:'None available'}}</p>
-            <p class="text-[#003755] gap-2 flex items-center">    <i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p>
-
-           
+            <p class="text-[#003755] gap-2 flex items-center">    <i class="fa-solid fa-calendar-check"></i>{{announcement.release_date | date:'M. j, Y, g:i a' | default:'None available'}}</p> 
         </div>
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center w-full mt-[1rem]">
             <a class="w-full" href="{% url 'Contributor Service Announcement Read' announcement.id %}">
                 <div class="w-full flex justify-center flex-col items-center">
 
                     <div class="w-full h-full flex justify-start flex-col items-start relative">
                         <img class="h-[18rem] w-full object-cover" src="{{announcement.announcement_photo.url}}">
 
-                            <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
-                                <h1 class="font-bold text-2xl">{{announcement.title | default:'None available'}}</h1>
+                            <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-0 min-[490px]:p-4 h-[30%]">
+                                <h1 class="font-bold text-lg min-[490px]:text-2xl">{{announcement.title | default:'None available'}}</h1>
                             
                             </div>
 
@@ -148,7 +140,7 @@
     </div>
     {% endfor %}
     {% endif %}
-</div>
+
 
 
 

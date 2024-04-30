@@ -13,8 +13,8 @@
 
         <div class="w-full flex justify-center flex-col bg-white rounded-xl p-4">
     
-            <div class="flex justify-between w-full items-center">
-                <h1 class="text-start font-bold text-3xl my-2 break-words w-[18rem]">{{intervention.title | default:'None available'}}</h1>
+            <div class="flex w-full flex-col min-[450px]:flex-row min-[450px]:justify-between my-2">
+                <h1 class="text-start font-bold my-2 break-words w-[18rem] text-xl min-[490px]:text-3xl">{{intervention.title | default:'None available'}}</h1>
     
                 <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-calendar-check"></i>{{intervention.intervention_date | date:'M. j, Y' | default:'None available'}}</p>
             </div>
