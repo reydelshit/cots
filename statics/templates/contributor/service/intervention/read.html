@@ -12,29 +12,33 @@
 
 
         <div class="w-full flex justify-center flex-col bg-white rounded-xl p-4">
+            <h1 class="font-bold break-words text-xl min-[490px]:text-3xl text-center w-full my-[1.5rem]">{{intervention.title | default:'None available'}}</h1>
     
             <div class="flex w-full flex-col min-[450px]:flex-row min-[450px]:justify-between my-2">
-                <h1 class="text-start font-bold my-2 break-words w-[18rem] text-xl min-[490px]:text-3xl">{{intervention.title | default:'None available'}}</h1>
+                <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-user"></i>{{intervention.user | default:'None available'}}</p>
     
                 <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-calendar-check"></i>{{intervention.intervention_date | date:'M. j, Y' | default:'None available'}}</p>
             </div>
     
-            <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-feather"></i>{{intervention.hosting_agency | default:'None available'}}</p>
-    
-    
-    
-            <p class="flex items-center gap-2 text-[#003755]"><i class = "fa-solid fa-location-dot"></i>{{intervention.location | default:'None available'}}</p>
-    
-            <div class="w-full flex justify-center">
-                <img class="h-[90%] w-[90%] object-cover my-[2rem] block" src="{{intervention.intervention_photo.url}}">
-    
-            </div>
-            <p class="w-full break-words">{{intervention.details | default:'None available'}}</p>
-            <p class="flex items-center gap-2 font-bold my-[2rem]"><i class = "fa-solid fa-arrow-up-wide-short"></i>{{intervention.caught_amount | default:'None available'}} COTS caught.</p>
+            <!-- <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-feather"></i>{{intervention.hosting_agency | default:'None available'}}</p> -->
+            <!-- <p class="flex items-center gap-2 text-[#003755]"><i class = "fa-solid fa-location-dot"></i>{{intervention.location | default:'None available'}}</p> -->
+
+            <div class="w-full h-full flex justify-start flex-col items-start relative">
+                <img class="h-[25rem] w-full object-cover" src="{{intervention.intervention_photo.url}}" > 
+
+
+                    <div class="w-full flex items-start absolute bg-black bg-opacity-70 text-white bottom-0 p-0 min-[490px]:p-4 h-[20%] flex-col justify-center">
+                        <h1 class="font-semibold text-lg min-[490px]:text-2xl">{{intervention.location | default:'None available'}}</h1>
+                        <p>{{intervention.caught_amount | default:'None available'}} COTS caught.</p>
+                    </div>
+
+
+                </div>
+            <p class="w-full break-words text-[#003755] my-[1.5rem] tracking-wide">{{intervention.details | default:'None available'}}</p>
     
             <div class="w-full justify-end flex my-[2rem]">
                 <div
-                    class="text-center buttons cursor-pointer w-[8rem] bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 rounded-xl font-bold text-white hover:text-[#003755]">
+                    class="text-center buttons cursor-pointer w-[8rem] bg-[#003755] hover:bg-white hover:border-[#003755] border-2 p-2 rounded-full font-bold text-white hover:text-[#003755]">
                     <a class="share-intervention" target="blank">Share</a>
                 </div>
             </div>

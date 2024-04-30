@@ -8,15 +8,15 @@
 </div>
 
 
-<div class="my-[2rem] flex w-dvw px-[1.8rem] items-center justify-center relative text-center">
+<div class="my-[2rem] flex flex-col w-full px-[1.8rem] items-center justify-center relative text-center">
     <h1 class="font-bold text-[3rem] text-white text-center">COTSEYE</h1>
 
-    <div class="p-2 absolute right-5">
+    <div class="p-2 min-[360px]:absolute right-5">
         <button onclick="showDropdownOptions()"
             class="flex flex-row justify-between px-2 py-2 text-white rounded-md shadow focus:outline-none focus:border-[#003755]">
             <span class=" text-white text-2xl"><i class="fa-solid fa-sliders"></i></span>
         </button>
-        <div id="options" class="hidden absolute left-[-9rem] w-48 z-20 py-2 mt-[1rem] bg-white rounded-lg shadow-xl">
+        <div id="options" class="hidden absolute left-[-9rem] z-20 w-48 py-2 mt-[1rem] bg-white rounded-lg shadow-xl">
             <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Valid Posts</a>
             <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Pending Posts</a>
         </div>
@@ -113,13 +113,10 @@
 
 
 <div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
-    <div class="w-full flex justify-between my-4 ">
+    <div class="flex w-full flex-col min-[450px]:flex-row min-[450px]:justify-between my-2">
+        <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-user"></i>USERNAME</p>
 
-
-        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-user"></i>USERNAME</p>
-        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-calendar-check"></i>April 111</p>
-
-
+        <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-calendar-check"></i>April 11</p>
     </div>
     <div class="flex items-center justify-center">
 
@@ -129,7 +126,7 @@
                 <img class="h-[18rem] w-full object-cover" src="/statics/assets/bg-2.jpg">
 
                 <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
-                    <h1 class="font-bold text-2xl">TITLE HERE</h1>
+                    <h1 class="font-semibold text-lg min-[490px]:text-2xl">{{announcement.title | default:'None available'}}</h1>
 
                 </div>
 
@@ -145,14 +142,13 @@
 </div>
 
 <div class="w-full mb-[2rem] border-2 rounded-lg px-4 bg-white" id="announcement-records">
-    <div class="w-full flex justify-between my-4 ">
+    <div class="flex w-full flex-col min-[450px]:flex-row min-[450px]:justify-between my-2">
+        <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-user"></i>USERNAME</p>
 
-
-        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-user"></i>USERNAME</p>
-        <p class="text-[#003755] gap-2 flex items-center"> <i class="fa-solid fa-calendar-check"></i>April 111</p>
-
-
+        <p class="flex items-center gap-2 text-[#003755]"><i class="fa-solid fa-calendar-check"></i>April 11</p>
     </div>
+
+
     <div class="flex items-center justify-center">
 
         <div class="w-full flex justify-center flex-col items-center">
@@ -161,7 +157,7 @@
                 <img class="h-[18rem] w-full object-cover" src="/statics/assets/bg-2.jpg">
 
                 <div class="w-full flex items-center absolute bg-black bg-opacity-70 text-white bottom-0 p-4 h-[30%]">
-                    <h1 class="font-bold text-2xl">TITLE HERE</h1>
+                    <h1 class="font-semibold text-lg min-[490px]:text-2xl">{{announcement.title | default:'None available'}}</h1>
 
                 </div>
 
