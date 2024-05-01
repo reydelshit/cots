@@ -134,9 +134,10 @@
                     </div>
             
                     <a class="bg-black hover:bg-[#003755] p-[1.30rem] text-center !text-white" href="{% url 'Contributor Service Profile' %}">Profile</a>
-            
-                    <i class="fa-solid fa-bars opened-side text-[#003755] z-50" id="toggleButton"></i>
-                    <i class="fa-solid fa-times closed-side text-[#003755] hidden" id="closeButton"></i>
+                    
+                    <img src="/statics/assets/navigation.png"  class="opened-side text-[#003755] z-50 w-[2rem] h-[3rem]" id="toggleButton" alt="togs">
+                    <!-- <i class="fa-solid fa-bars opened-side text-[#003755] z-50" id="toggleButton"></i> -->
+                    <!-- <i class="fa-solid fa-times closed-side text-[#003755] hidden" id="closeButton"></i> -->
                 </div>
             </div>
         </nav>
@@ -159,7 +160,7 @@
 
     <script>
         const toggleButton = document.getElementById('toggleButton');
-        const closeButton = document.getElementById('closeButton');
+        // const closeButton = document.getElementById('closeButton');
         const sideLinks = document.querySelector('.sidelinks');
 
 

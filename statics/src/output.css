@@ -1109,6 +1109,18 @@ video {
   width: 100%;
 }
 
+.w-\[3rem\]{
+  width: 3rem;
+}
+
+.w-\[2\.5rem\]{
+  width: 2.5rem;
+}
+
+.w-\[2rem\]{
+  width: 2rem;
+}
+
 .flex-shrink{
   flex-shrink: 1;
 }
