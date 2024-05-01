@@ -4,7 +4,7 @@
 {% block content %}
 
 <style>
-    .tabs {
+     .tabs {
         overflow: hidden;
         display: flex;
         gap: 1rem;
@@ -13,33 +13,34 @@
 
     .tablink {
         width: 100%;
-        background-color: #003755;
+        background-color: white;
         float: left;
         border: 1px solid #003755;
+        color: #003755;
         outline: none;
         cursor: pointer;
         padding: 10px 15px;
         transition: background-color 0.3s;
-        border-radius: 8px;
-        color: white;
+        border-radius: 25px;
+    
         font-weight: bold;
     }
 
     .tablink:hover {
-        background-color: white;
-        color: #003755
+        background-color: #003755;
+        color: white;
     }
 
     .tablink.active {
-        background-color: #025c8d;
+        background-color: #003755;
     }
 
     .tabcontent {
         display: none;
         padding: 20px;
-        border: 1px solid #ccc;
+   
         margin-top: -1px;
-        border-radius: 8px;
+
     }
 
     .tabcontent h3 {
@@ -51,141 +52,70 @@
     <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
 </div>
 
-<h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">POST</h1>
+<h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">CREATE REPORT</h1>
 
 
-<form action="" class="report-form bg-white p-2 rounded-lg" method="POST" enctype="multipart/form-data">
+<form action="" class="report-form bg-white p-2 rounded-lg !relative" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <div class="tabs flex flex-col min-[570px]:flex-row">
-        <button class="tablink active flex gap-2 items-center text-lg" onclick="openTab('tab1')"><i class="fa-solid fa-circle-info"></i> Details </button>
-        <button class="tablink flex gap-2 items-center text-lg" onclick="openTab('tab2')"> <i class="fa-solid fa-image"></i> Image</button>
-        <button class="tablink flex gap-2 items-center text-lg" onclick="openTab('tab3')"><i class="fa-solid fa-location-dot"></i> Location</button>
+    <div class="tabs flex flex-col min-[570px]:flex-row text-center">
+        <button class="tablink active flex gap-2 items-center text-lg text-center justify-center rounded-full w-full"
+            onclick="openTab('tab1')"> Step 1 </button>
+        <button class="tablink flex gap-2 items-center text-lg text-center justify-center rounded-full w-full"
+            onclick="openTab('tab2')">Step 2</button>
     </div>
 
-    <div id="tab1" class="tabcontent w-full">
-        <div class="w-full flex flex-col">
 
-            <label class="font-bold my-2" for="description">Description <i class="fa-solid fa-comments"></i></label>
+    <div id="tab1" class="tabcontent w-full relative">
 
-            <textarea class="border-2 p-2 h-[8rem] rounded-md" type="text" value="" id="description" name="description"
-                required>
-                    </textarea>
-        </div>
+        <div class="flex flex-col my-4 min-[570px]:flex-row min-[570px]:justify-between gap-1 cursor-pointer">
+            <div
+                class="w-full p-2 my-2  cursor-pointer flex-col flex items-center justify-center bg-[#003755] hover:bg-[#00375594] relative h-[8rem] !text-white">
+                <i class="fa-solid fa-camera text-[2rem]"></i>
+                <label for="post-photo"
+                    class="capture-photo hover:border-2 w-full  text-white font-bold hover:bg-white text-center cursor-pointer p-2 rounded-lg">Capture
+                    with camera</label>
+                <input type="file" class="post-photo w-full border-2 p-2 rounded-md absolute inset-0 opacity-0"
+                    name="post_photos" id="post-photo" accept="image/*" capture="environment" required>
+            </div>
 
-        <h1 class="font-bold my-2">Optional Details:</h1>
-
-        <div class="flex flex-col gap-4">
-            <input placeholder="Density" class="h-[2.5rem] border-2 p-2 rounded-md" type="number" value="" id="density" name="density">
-            <input placeholder="Size" class="h-[2.5rem] border-2 p-2 rounded-md" type="number" value="" id="size" name="size">
-            <select class="h-[2.5rem] border-2 p-2 rounded-md" name="depth" id="depth">
-                <option disabled selected value>Depth</option>
-
-                {% for depth in depths %}
-
-                <option value="{{depth.id}}">{{depth}}</option>
-
-                {% endfor %}
-            </select>
-
-            <select class="h-[2.5rem] border-2 p-2 rounded-md" name="weather" id="weather">
-                <option disabled selected value>Weather</option>
-
-                {% for weather in weathers %}
-                <option value="{{weather.id}}">{{weather}}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-
-
-        <!-- <div class = "card-body">
-                <div class = "field">
-                    <div class = "column">
-                    
-
-                        <label for = "depth">Depth</label> 
-                            
-                        <div class = "depth">
-                            <input type = "text" value = "" id = "depth" name = "depth">
-                                
-                            <i class = "fa-solid fa-arrow-down-wide-short"></i>
-                        </div>
-
-                     
-                    </div>
-
-                    <div class = "column">
-                        <label for = "density">Density / Square Meter</label> 
-                            
-                        <div class = "density">
-                            <input type = "number" value = "" id = "density" name = "density">
-                                
-                            <i class = "fa-solid fa-braille"></i>
-                        </div>
-
-                        <label for = "weather">Weather</label> 
-                            
-                        <div class = "weather">
-                            <input type = "text" value = "" id = "weather" name = "weather">
-                                
-                            <i class = "fa-solid fa-temperature-high"></i>
-                        </div>
-
-                    
-                    </div>
-                </div>
-
-               
-            </div> -->
-<div class="w-full flex justify-end my-[2rem]">
-    <button type="button" class="border-2 max-w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab1')">Next</button>
-
-</div>
-
-    </div>
-
-    <div id="tab2" class="tabcontent w-full" style="display:none;">
-
-        <div class="w-full border-2 p-2 my-2 rounded-md flex-col flex items-center">
-            <label for="post-photo" class="capture-photo hover:border-2 w-full my-2 h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">Capture</label>
-
-            <input type="file" class="post-photo w-full border-2 p-2 rounded-md" name="post_photos" accept="image/*" capture="environment" required>
-        </div>
-
-
-        <div class="flex items-center justify-between w-full h-[4rem] border-2 p-2 rounded-md">
-            <label for="capture-date">Capture Date</label>
-
-            <div class="cursor-pointer">
-                <input type="datetime-local" value="" id="capture-date" name="capture_date" required>
+            <div
+                class="w-full p-2 my-2 cursor-pointer flex-col flex items-center justify-center bg-[#003755] hover:bg-[#00375594] relative h-[8rem] !text-white">
+                <i class="fa-solid fa-image text-[2rem]"></i>
+                <label for="post-photo"
+                    class="capture-photo hover:border-2 w-full  text-white font-bold hover:bg-white  text-center cursor-pointer p-2 rounded-lg">Capture
+                    with camera</label>
+                <input type="file" class="post-photo w-full border-2 p-2 rounded-md absolute inset-0 opacity-0"
+                    name="post_photos" id="post-photo" accept="image/*" capture="environment" required>
             </div>
         </div>
-        <div class="report-gallery">
+
+
+        <div
+            class="flex items-center my-4 justify-between w-full flex-col min-[440px]:flex-row h-[4rem] border-2 p-2 rounded-md">
+            <label for="capture-date">Capture Date</label>
+
+            <div class="cursor-pointer w-full">
+                <input class="w-full" type="datetime-local" value="" id="capture-date" name="capture_date" required>
+            </div>
+        </div>
+        <div class="report-gallery my-4">
             <img class="gallery-photo" src="{% static 'assets/posts/default.png' %}">
         </div>
 
-      
+        <!-- <div class="latitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
+            <input class="w-full" type="text" value="" id="latitude" name="latitude">
 
-
-        <div class="w-full flex justify-end my-[2rem]">
-            <button type="button" class="border-2 max-w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg" onclick="nextTab('tab2')">Next</button>
-        
-        </div>
-    </div>
-
-    <div id="tab3" class="tabcontent" style="display:none;">
-        <div class="latitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
-            <input type="text" value="" id="latitude" name="latitude">
-
-            <i class="fa-solid fa-map-location-dot"></i>
         </div>
 
         <div class="longitude flex justify-between w-full items-center h-[3rem] border-2 rounded-md mb-2 p-4">
-            <input type="text" value="" id="longitude" name="longitude">
+            <input class="w-full" type="text" value="" id="longitude" name="longitude">
 
-            <i class="fa-solid fa-map-location-dot"></i>
-        </div>
+        </div> -->
+
+
+        <h1 class="my-[2rem] text-center font-semibold text-[2rem] text-[#003755]">LOCATION</h1>
+
 
         <select class="h-[2.5rem] border-2 p-2 rounded-md my-2 w-full" name="location" id="location">
             <option disabled selected value="">Choose location</option>
@@ -203,20 +133,108 @@
         </div>
 
 
-        <div class="flex w-full justify-end my-2">
+        <div class="flex w-full justify-end my-4">
             <div
                 class="border-2 w-fit h-[3rem] bg-green-500 text-white font-bold hover:bg-white hover:border-green-600 hover:text-green-600 text-center cursor-pointer p-2 rounded-lg">
                 <a class="refresh-map" onclick="refreshMap()">Refresh</a>
             </div>
         </div>
 
-        <div class="flex w-full justify-center">
+
+
+
+        <div
+            class="flex w-full justify-between items-center my-[1.5rem] h-[6rem] sticky bottom-0 left-0 bg-white z-50 border-">
+
             <div
-                class="border-2 w-[15rem] h-[3rem] bg-[#003755] text-white font-bold hover:bg-white hover:border-blue-600 hover:text-blue-600 text-center cursor-pointer p-2 rounded-lg">
-                <a class="save-report" type="submit">Save</a>
+                class="border-2 w-[15rem] flex rounded-full justify-center bg-[#003755] text-white font-semibold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2">
+                <a class="uppercase">Save as draft</a>
             </div>
+
+            <button type="button"
+                class="border-2 w-[15rem] rounded-full bg-[#003755] text-white font-bold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2"
+                onclick="nextTab('tab1')">Next</button>
+
         </div>
     </div>
+
+    <div id="tab2" class="tabcontent w-full" style="display:none;">
+
+        <h1 class="my-[2rem] text-center font-semibold text-[2rem] text-[#003755]">OTHER DETAILS</h1>
+
+
+
+        <div class="w-full flex flex-col">
+
+            <label class="font-semibold my-2" for="description">Description </label>
+
+            <textarea class="border-2 p-2 h-[8rem] border-black" type="text" value="" id="description"
+                name="description" required>
+                    </textarea>
+        </div>
+
+
+
+        <div class="flex flex-col gap-4">
+            <div class="w-full flex flex-col gap-2">
+                <label class="font-semibold" for="density">DENSITY </label>
+                <input placeholder="NUMBER OF COTS" class="h-[2.5rem] border-2 p-2 border-black" type="number" value=""
+                    id="density" name="density">
+            </div>
+
+            <div class="w-full flex flex-col gap-2">
+                <label class="font-semibold" for="size">SIZE </label>
+                <input placeholder="SIZE OF COTS (ex. 12-15 cm)" class="h-[2.5rem] border-2 p-2 border-black"
+                    type="number" value="" id="size" name="size">
+            </div>
+
+            <!-- <input placeholder="INSERT PLACE HOLDER" class="h-[2.5rem] border-2 p-2" type="number" value="" id="size" name="size">
+            <input placeholder="INSERT PLACE HOLDER" class="h-[2.5rem] border-2 p-2" type="number" value="" id="size" name="size"> -->
+
+            <div class="w-full flex flex-col gap-2">
+                <label class="font-semibold" for="depth">DEPTH </label>
+                <select class="h-[2.5rem] border-2 p-2 border-black" name="depth" id="depth">
+                    <option disabled selected value>Depth</option>
+
+                    {% for depth in depths %}
+
+                    <option value="{{depth.id}}">{{depth}}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="w-full flex flex-col gap-2">
+                <label class="font-semibold" for="depth">WEATHER </label>
+                <select class="h-[2.5rem] border-2 p-2 border-black" name="weather" id="weather">
+                    <option disabled selected value>Weather</option>
+
+                    {% for weather in weathers %}
+                    <option value="{{weather.id}}">{{weather}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="flex w-full justify-between my-[1.5rem]">
+
+            <div
+                class="border-2 rounded-full w-[15rem] items-center flex justify-center h-[3rem] bg-[#003755] text-white font-semibold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 ">
+                <a class="uppercase">Save as draft</a>
+            </div>
+
+
+            <div
+                class="border-2 rounded-full w-[15rem] items-center flex justify-center h-[3rem] bg-[#003755] text-white font-semibold hover:bg-white hover:border-[#003755] hover:text-[#003755] text-center cursor-pointer p-2 ">
+                <a class="save-report uppercase" type="submit">Save and submit</a>
+            </div>
+        </div>
+
+    </div>
+
+
     <!--         
         <div class = "report" id = "capture">
             <div class = "card-header">
@@ -301,6 +319,32 @@
 {% endif %}
 {% endfor %}
 {% endif %}
+
+<script>
+    function openTab(tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.classList.add("active");
+    }
+
+    function nextTab(currentTabId) {
+        console.log(currentTabId)
+        var currentTab = document.getElementById(currentTabId);
+        var nextTab = currentTab.nextElementSibling;
+        openTab(nextTab.id);
+    }
+
+    openTab('tab1');
+
+</script>
 
 <script>
     const browsePhoto = document.querySelector(".post-photo");
@@ -476,27 +520,6 @@
 
 <script>
 
-    function openTab(tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.getElementById(tabName).style.display = "block";
-        event.currentTarget.classList.add("active");
-    }
-
-    function nextTab(currentTabId) {
-        var currentTab = document.getElementById(currentTabId);
-        var nextTab = currentTab.nextElementSibling;
-        openTab(nextTab.id);
-    }
-
-    openTab('tab1');
 
     const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 

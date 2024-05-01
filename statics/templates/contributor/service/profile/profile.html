@@ -3,18 +3,156 @@
 
 {% block content %}
 
-<div class="fixed inset-0 z-[-10] h-screen w-full">
-    <img src="/statics/assets/bg-2.jpg" class="h-full w-full object-cover top-[-5rem]" alt="">
+<div class="fixed inset-0 z-[-10] h-screen w-full bg-[#003755] ">
+
 </div>
 
-<h1 class="my-[2rem] text-center font-bold text-[3rem] text-white">PROFILE</h1>
+
+<div class="w-full mb-[2rem]">
+    <div class="flex flex-col">
+        <div class="flex justify-center items-center">
+            <div class="w-[10rem] h-[10rem] rounded-full overflow-hidden">
+                <img src="{{user.profile_photo.url}}" alt="Profile Photo">
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center flex-col">
+            <p class="text-2xl text-white">{{user.account.username}}</p>
+            <div class="w-[80%] border-2 my-4 border-white"></div>
+            <p class="text-white uppercase">{{user.account.usertype}}</p>
+        </div>
+    </div>
+
+    <div class="w-full flex flex-col justify-start items-start mt-[2rem]">
+        <div class="flex flex-col text-white w-full">
+            <label class="my-1">Firstname</label>
+            <span class="block border-2 border-white p-2 text-white font-semibold w-full break-words">
+                {{user.first_name | default:'None available'}}
+            </span>
+        </div>
+
+        <div class="flex flex-col text-white w-full mt-[0.8rem]">
+            <label class="my-1">Lastname</label>
+            <span class="block border-2 border-white p-2 text-white font-semibold w-full break-words">
+                {{user.last_name | default:'None available'}}
+            </span>
+        </div>
+
+        <div class="flex flex-col text-white w-full mt-[0.8rem]">
+            <label class="my-1">Email</label>
+            <span class="block border-2 border-white p-2 text-white font-semibold w-full break-words">
+                {{user.email | default:'None available'}}
+            </span>
+        </div>
+
+        <div class="flex flex-col text-white w-full mt-[0.8rem]">
+            <label class="my-1">Phone Number</label>
+            <span class="block border-2 border-white p-2 text-white font-semibold w-full break-words">
+                {{user.phone_number | default:'None available'}}
+            </span>
+        </div>
+    </div>
+
+    <div class="flex flex-col min-[370px]:flex-row min-[370px]:justify-end gap-2 w-full">
+        <button class="min-[370px]:w-[8rem] w-full bg-[#003755] text-white p-3 rounded-full border-2 border-white">UPDATE</button>
+
+        <button class="min-[370px]:w-[8rem] w-full bg-black text-white p-3 rounded-full">LOGOUT</button>
+    </div>
+</div>
+
+<div class="h-screen w-dvw bg-[#0C0C0C] p-[2rem] block">
+
+    <div class="my-[2rem] flex flex-col w-full px-[1.8rem] items-center justify-center relative text-center ">
+        <h1 class="font-bold text-[3rem] text-white text-center">MY POSTS</h1>
+
+        <div class="p-2 min-[360px]:absolute right-5">
+            <button onclick="showDropdownOptions()"
+                class="flex flex-row justify-between px-2 py-2 text-white rounded-md shadow focus:outline-none focus:border-[#003755]">
+                <span class=" text-white text-2xl"><i class="fa-solid fa-sliders"></i></span>
+            </button>
+            <div id="options" class="hidden absolute left-[-9rem] z-20 w-48 py-2 mt-[1rem] bg-white rounded-lg shadow-xl">
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Valid Posts</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:text-[#003755]">Pending Posts</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-start items-start ">
+        <h1 class="font-bold border-l-4 border-white pl-2 text-white">VALID or PENDING (nworking)</h1>
+    </div>
+
+    <div class="h-full my-[2rem] w-full flex flex-col items-center ">
+        
+        <div class="bg-white px-[2.5rem] py-[1rem] w-full">
+             <span class="items-center flex gap-2 text-[#003755]">
+                 <i class="fa-solid fa-flag"></i>
+                 <p>VALID</p>
+             </span>
+     
+             <div class="flex flex-col min-[370px]:flex-row min-[370px]:justify-between  gap-2">
+                 <div class="flex gap-2 items-center text-[#003755]">
+                     <i class="fa-solid fa-calendar-check"></i>
+                     <p class="text-black font-semibold">Username</p>
+                 </div>
+     
+                 <div class="flex gap-2 items-center">
+                     <i class="fa-solid fa-calendar-check"></i>
+                     <p>Username</p>
+                 </div>
+             </div>
+
+             <img class="h-[15rem] w-full object-cover my-4" src="/statics/assets/bg-2.jpg"  alt="img">
+
+             <span class="items-center flex gap-2 text-[#003755] my-2">
+                <i class="fa-solid fa-location"></i>
+                <p class="text-black font-semibold">INSERT LOCATION</p>
+            </span>
+            
+            <p class="w-full break-words text-[#003755]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt recusandae modi necessitatibus ipsa, aperiam a esse dicta natus veritatis sequi!</p>
+            
+            <div class="flex flex-col my-[1rem] break-words">
+                <span class="items-center flex gap-2 text-[#003755]">
+                    <i class="fa-solid fa-eye"></i>
+                    <p class="text-black font-semibold">POST OBSERVATIONS</p>
+                </span>
+
+                <div class="flex flex-col">
+                    <span class="block text-[#003755] uppercase">Size: </span>
+                    <span class="block text-[#003755] uppercase">Depth: </span>
+                    <span class="block text-[#003755] uppercase">density: </span>
+                    <span class="block text-[#003755] uppercase">weather: </span>
+
+                </div>
+
+            </div>
+
+            <div class="flex flex-col min-[370px]:flex-row min-[370px]:justify-between gap-2 w-full">
+                <button class="w-full bg-[#003755] text-white p-3 rounded-full">UPDATE</button>
+
+                <button class="w-full bg-black text-white p-3 rounded-full">SEND</button>
+            </div>
+        
+        </div>
+     </div>
+
+</div>
 
 
-    <div class = "profile">
+
+<script>
+      function showDropdownOptions() {
+        document.getElementById("options").classList.toggle("hidden");
+        // document.getElementById("arrow-up").classList.toggle("hidden");
+        // document.getElementById("arrow-down").classList.toggle("hidden");
+    }
+</script>
+
+
+<!-- <div class = "profile">
         <div class = "card-body">
             <img src = "{{user.profile_photo.url}}">                
                     
-            <p>{{user.account.username}}</p>
+            <p class="text-2xl">{{user.account.username}}</p>
 
             <div class = "field">
                 <div class = "column">
@@ -96,5 +234,5 @@
             </div>   
           </div>
         </div>
-    </div>
+    </div> -->
 {% endblock content %}
